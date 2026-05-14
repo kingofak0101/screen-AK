@@ -1,0 +1,15 @@
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const app = express();
+const DIST = path.join(__dirname, 'dist');
+const INDEX = path.join(DIST, 'index.html');
+
+app.use(express.static(DIST, { maxAge: '1h', etag: true, index: false }));
+
+app.use((req, res) => {
+  res.sendFile(INDEX);
+});
+
+const PORT = process.env.PORT || 80;
+app.listen(PORT, '0.0.0.0', () => console.log('AK Panel listening on', PORT));

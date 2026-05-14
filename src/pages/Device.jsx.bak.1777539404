@@ -1,0 +1,264 @@
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useParams } from 'react-router-dom';
+import Background from '../components/Background';
+import Toast from '../components/Toast';
+import DeviceScreen from '../components/DeviceScreen';
+import { getDevice, setStream, sendCommand, setLockOverlay } from '../lib/store';
+
+export default function Device() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [device, setDevice] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [started, setStarted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [toast, setToast] = useState({ show: false, msg: '', type: 'success' });
+  const detailPoll = useRef(null);
+  const aliveRef = useRef(true);
+  const [lockModalOpen, setLockModalOpen] = useState(false);
+  const [lock, setLock] = useState({ on: false, text: '' });
+  const lockKey = 'ak_lock_' + id;
+
+  // Restore lock state from localStorage
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(lockKey);
+      if (raw) setLock(JSON.parse(raw));
+    } catch {}
+  }, [lockKey]);
+  useEffect(() => {
+    try { localStorage.setItem(lockKey, JSON.stringify(lock)); } catch {}
+  }, [lockKey, lock]);
+
+  const applyLock = async (on, text) => {
+    try { await setLockOverlay(id, on, text); setLock({ on: !!on, text: String(text || '') }); flash(on ? 'LOCKED' : 'UNLOCKED'); }
+    catch { flash('FAILED'); }
+  };
+
+
+  const fetchDetail = useCallback(async () => {
+    try { const d = await getDevice(id); if (aliveRef.current) { setDevice(d); setLoading(false); } }
+    catch (e) { if (e.status === 401) navigate('/'); else if (e.status === 404) navigate('/dashboard'); }
+  }, [id, navigate]);
+
+  useEffect(() => {
+    aliveRef.current = true;
+    fetchDetail();
+    detailPoll.current = setInterval(fetchDetail, 2500);
+    return () => { aliveRef.current = false; clearInterval(detailPoll.current); };
+  }, [fetchDetail]);
+
+  // Toggle stream when started changes
+  useEffect(() => {
+    if (started) setStream(id, true).catch(() => {});
+    return () => { if (started) setStream(id, false).catch(() => {}); };
+  }, [started, id]);
+
+  const flash = (msg) => { setToast({ show: true, msg, type: 'success' }); setTimeout(() => setToast(t => ({ ...t, show: false })), 900); };
+  const navAct = (type, label) => sendCommand(id, type).then(() => flash(label)).catch(() => {});
+
+  const goto = (path) => { setMenuOpen(false); navigate(path); };
+
+  return (
+    <div className="fixed inset-0 flex flex-col overflow-hidden bg-bg">
+      <Background />
+
+      {/* Header */}
+      <header className="relative z-30 flex items-center justify-between gap-2 px-3 py-2.5 border-b border-white/[0.06] bg-bg/80 backdrop-blur-xl">
+        <button onClick={() => navigate('/dashboard')} className="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/75 hover:bg-white/10 active:scale-95 transition-all flex-shrink-0" aria-label="Back">
+          <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2.2"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <div className="flex-1 min-w-0 text-center">
+          <div className="text-[9px] font-bold tracking-[1.6px] uppercase text-white/35 leading-none">Remote Device</div>
+          <div className="text-[12.5px] font-bold text-white/95 leading-tight mt-0.5 truncate">{device?.brand || '—'} {device?.model || ''}</div>
+        </div>
+        <div className="flex items-center gap-1.5 flex-shrink-0">
+          {device && (
+            <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[9.5px] font-bold tracking-wide uppercase ${device.online ? (started ? 'bg-accent3/10 border-accent3/30 text-accent3' : 'bg-white/[0.04] border-white/[0.08] text-white/55') : 'bg-white/[0.04] border-white/[0.08] text-white/45'}`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${device.online && started ? 'bg-accent3 shadow-[0_0_6px_rgba(0,255,200,0.8)] animate-pulse-soft' : device.online ? 'bg-white/40' : 'bg-white/30'}`} />
+              {device.online ? (started ? 'Live' : 'Idle') : 'Off'}
+            </div>
+          )}
+          <button onClick={() => setMenuOpen(o => !o)} className="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/75 hover:bg-white/10 active:scale-95 transition-all" aria-label="Menu">
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2.2"><path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round"/></svg>
+          </button>
+        </div>
+      </header>
+
+      {/* Hamburger drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMenuOpen(false)} className="fixed inset-0 z-40 bg-black/50 backdrop-blur-[2px]" />
+            <motion.div initial={{ opacity: 0, x: 20, y: -10 }} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 20, y: -10 }} transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }} className="fixed top-[60px] right-3 z-50 w-[220px] glass rounded-xl border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
+              <MenuItem onClick={() => goto('/device/' + encodeURIComponent(id) + '/keystroke')} icon={
+                <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10" strokeLinecap="round"/></svg>
+              } label="Keystroke" desc="Send text & keys" />
+              <MenuItem onClick={() => goto('/device/' + encodeURIComponent(id) + '/reader')} icon={
+                <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              } label="Reader EVLF" desc="Frame-by-frame view" />
+              <MenuItem onClick={() => goto('/device/' + encodeURIComponent(id) + '/camera')} icon={
+                <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><path d="M4 7h3l2-3h6l2 3h3a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1z"/><circle cx="12" cy="13" r="4"/></svg>
+              } label="Camera" desc="Live device camera" />
+              <MenuItem onClick={() => { setMenuOpen(false); setLockModalOpen(true); }} icon={
+                <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><rect x="5" y="11" width="14" height="9" rx="1.8"/><path d="M8 11V7a4 4 0 018 0v4" strokeLinecap="round"/></svg>
+              } label="Screen Lock" desc={lock.on ? 'ON — black overlay' : 'Black overlay + text'} />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Main */}
+      <main className="relative z-10 flex-1 min-h-0 flex items-center justify-center p-2">
+        {loading ? (
+          <span className="inline-block w-7 h-7 border-2 border-white/10 border-t-accent rounded-full animate-spin" />
+        ) : (
+          <DeviceScreen id={id} device={device} started={started} />
+        )}
+
+        {/* START button overlay */}
+        {!loading && !started && (
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+            <button
+              onClick={() => setStarted(true)}
+              disabled={!device?.online}
+              className="pointer-events-auto group relative px-8 py-4 rounded-2xl bg-gradient-to-br from-accent to-accent2 border border-white/15 shadow-[0_20px_50px_-15px_rgba(0,255,170,0.5)] hover:shadow-[0_25px_60px_-15px_rgba(0,255,170,0.7)] active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative flex items-center gap-2.5">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-bg fill-bg" strokeWidth="2"><path d="M6 4l14 8-14 8V4z" strokeLinejoin="round"/></svg>
+                <span className="text-[14px] font-extrabold tracking-[2px] uppercase text-bg">Start</span>
+              </div>
+            </button>
+          </motion.div>
+        )}
+
+        {/* STOP / pulse indicator (top-right of main) */}
+        {started && (
+          <button
+            onClick={() => setStarted(false)}
+            className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/55 backdrop-blur-md border border-white/10 text-[9.5px] font-bold tracking-wide uppercase text-white/85 hover:bg-black/70 active:scale-95 transition-all"
+          >
+            <span className="w-2 h-2 rounded-sm bg-rose-400" />
+            Stop
+          </button>
+        )}
+      </main>
+
+      {/* Bottom controls */}
+      <footer className="relative z-20 border-t border-white/[0.06] bg-bg/80 backdrop-blur-xl px-2 py-2 pb-[max(8px,env(safe-area-inset-bottom))]">
+        <div className="grid grid-cols-4 gap-1.5 mb-1.5">
+          <Quick label="Up" onClick={() => sendCommand(id, 'swipe', { x1: Math.round(0.5 * (device?.screenW || 1080)), y1: Math.round(0.7 * (device?.screenH || 2400)), x2: Math.round(0.5 * (device?.screenW || 1080)), y2: Math.round(0.3 * (device?.screenH || 2400)), dur: 200 })} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="2.2"><path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Quick>
+          <Quick label="Down" onClick={() => sendCommand(id, 'swipe', { x1: Math.round(0.5 * (device?.screenW || 1080)), y1: Math.round(0.3 * (device?.screenH || 2400)), x2: Math.round(0.5 * (device?.screenW || 1080)), y2: Math.round(0.7 * (device?.screenH || 2400)), dur: 200 })} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="2.2"><path d="M12 5v14M19 12l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Quick>
+          <Quick label="Left" onClick={() => sendCommand(id, 'swipe', { x1: Math.round(0.8 * (device?.screenW || 1080)), y1: Math.round(0.5 * (device?.screenH || 2400)), x2: Math.round(0.2 * (device?.screenW || 1080)), y2: Math.round(0.5 * (device?.screenH || 2400)), dur: 200 })} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="2.2"><path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Quick>
+          <Quick label="Right" onClick={() => sendCommand(id, 'swipe', { x1: Math.round(0.2 * (device?.screenW || 1080)), y1: Math.round(0.5 * (device?.screenH || 2400)), x2: Math.round(0.8 * (device?.screenW || 1080)), y2: Math.round(0.5 * (device?.screenH || 2400)), dur: 200 })} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="2.2"><path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Quick>
+        </div>
+        <div className="grid grid-cols-3 gap-1.5">
+          <Nav label="Back" onClick={() => navAct('back', 'BACK')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><path d="M9 18l-6-6 6-6M3 12h18" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Nav>
+          <Nav label="Home" onClick={() => navAct('home', 'HOME')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><circle cx="12" cy="12" r="9"/></svg>
+          </Nav>
+          <Nav label="Recents" onClick={() => navAct('recents', 'RECENTS')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><rect x="5" y="5" width="14" height="14" rx="1.5"/></svg>
+          </Nav>
+        </div>
+      </footer>
+
+      <LockModal open={lockModalOpen} onClose={() => setLockModalOpen(false)} lock={lock} onApply={applyLock} />
+      <Toast show={toast.show} message={toast.msg} type={toast.type} />
+    </div>
+  );
+}
+
+function MenuItem({ icon, label, desc, onClick }) {
+  return (
+    <button onClick={onClick} className="w-full flex items-center gap-3 px-3.5 py-3 hover:bg-white/[0.05] active:bg-white/10 transition-colors text-left border-b border-white/[0.04] last:border-b-0">
+      <div className="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/75 flex-shrink-0">{icon}</div>
+      <div className="flex-1 min-w-0">
+        <div className="text-[12px] font-bold text-white/95 leading-tight">{label}</div>
+        <div className="text-[10px] text-white/45 mt-0.5">{desc}</div>
+      </div>
+      <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 stroke-white/30 fill-none flex-shrink-0" strokeWidth="2"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    </button>
+  );
+}
+function Nav({ children, label, onClick, disabled }) {
+  return (
+    <button onClick={onClick} disabled={disabled} className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white/85 hover:bg-white/10 hover:text-white active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+      {children}
+      <span className="text-[10px] font-bold tracking-[1.2px] uppercase">{label}</span>
+    </button>
+  );
+}
+function Quick({ children, label, onClick, disabled }) {
+  return (
+    <button onClick={onClick} disabled={disabled} className="flex items-center justify-center gap-1 py-1.5 rounded-lg bg-white/[0.025] border border-white/[0.05] text-[9.5px] font-bold tracking-wide uppercase text-white/55 hover:bg-white/[0.06] hover:text-white/85 active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+      {children}{label}
+    </button>
+  );
+}
+
+function LockModal({ open, onClose, lock, onApply }) {
+  const [text, setText] = useState(lock.text || '');
+  useEffect(() => { if (open) setText(lock.text || ''); }, [open, lock.text]);
+  if (!open) return null;
+  return (
+    <AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}
+        className="fixed inset-0 z-[60] bg-black/65 backdrop-blur-[3px] flex items-center justify-center p-4">
+        <motion.div initial={{ opacity: 0, scale: 0.94, y: 8 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.94, y: 8 }}
+          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-[360px] glass rounded-2xl border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] overflow-hidden">
+          <div className="px-4 py-3 border-b border-white/[0.06] flex items-center justify-between">
+            <div>
+              <div className="text-[9px] font-bold tracking-[1.6px] uppercase text-white/35 leading-none">Screen Lock</div>
+              <div className="text-[13px] font-bold text-white/95 mt-0.5">Black Overlay + Text</div>
+            </div>
+            <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[9.5px] font-bold tracking-wide uppercase ${lock.on ? 'bg-rose-500/10 border-rose-500/30 text-rose-300' : 'bg-white/[0.04] border-white/[0.08] text-white/55'}`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${lock.on ? 'bg-rose-400 animate-pulse-soft' : 'bg-white/30'}`} />
+              {lock.on ? 'Active' : 'Off'}
+            </span>
+          </div>
+          <div className="p-4 space-y-3">
+            <div>
+              <label className="block text-[9.5px] font-bold tracking-[1.4px] uppercase text-white/45 mb-1.5">Display Text</label>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                rows={3}
+                placeholder="Pay ₹500 to unlock..."
+                className="w-full px-3 py-2.5 rounded-lg bg-black/40 border border-white/[0.08] text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/50 focus:bg-black/55 transition-colors resize-none"
+              />
+              <div className="text-[10px] text-white/40 mt-1">Shows full-screen on the phone over all apps.</div>
+            </div>
+            <div className="flex items-center gap-2 pt-1">
+              <button onClick={onClose} className="flex-1 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[11px] font-bold tracking-[1.2px] uppercase text-white/65 hover:bg-white/[0.08] active:scale-95 transition-all">Cancel</button>
+              {lock.on && (
+                <button onClick={() => { onApply(false, ''); onClose(); }} className="flex-1 py-2.5 rounded-lg bg-white/[0.04] border border-amber-400/30 text-[11px] font-bold tracking-[1.2px] uppercase text-amber-200 hover:bg-amber-400/10 active:scale-95 transition-all">Unlock</button>
+              )}
+              <button
+                onClick={() => { onApply(true, text); onClose(); }}
+                disabled={!text.trim() && !lock.on}
+                className="flex-1 py-2.5 rounded-lg bg-gradient-to-br from-rose-500 to-rose-600 border border-rose-400/40 text-[11px] font-extrabold tracking-[1.4px] uppercase text-white shadow-[0_8px_24px_-8px_rgba(244,63,94,0.6)] hover:from-rose-400 hover:to-rose-500 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {lock.on ? 'Update' : 'Lock'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
