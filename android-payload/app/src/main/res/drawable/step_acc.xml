@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="120dp"
+    android:viewportWidth="200"
+    android:viewportHeight="120">
+
+  <!-- Phone outline -->
+  <path android:fillColor="#1a1a1a" android:strokeColor="#333333" android:strokeWidth="1.5"
+      android:pathData="M30,8 Q30,4 34,4 L86,4 Q90,4 90,8 L90,112 Q90,116 86,116 L34,116 Q30,116 30,112 Z"/>
+  <!-- Screen area -->
+  <path android:fillColor="#0d0d0d"
+      android:pathData="M33,14 L87,14 L87,110 L33,110 Z"/>
+  <!-- Home bar -->
+  <path android:fillColor="#333333" android:strokeWidth="0"
+      android:pathData="M52,113 L68,113 Q70,113 70,114 L70,114.5 Q70,115 68,115 L52,115 Q50,115 50,114.5 L50,114 Q50,113 52,113 Z"/>
+
+  <!-- Settings list items -->
+  <path android:fillColor="#222222"
+      android:pathData="M36,20 L84,20 Q85,20 85,21 L85,30 Q85,31 84,31 L36,31 Q35,31 35,30 L35,21 Q35,20 36,20 Z"/>
+  <path android:fillColor="#222222"
+      android:pathData="M36,33 L84,33 Q85,33 85,34 L85,43 Q85,44 84,44 L36,44 Q35,44 35,43 L35,34 Q35,33 36,33 Z"/>
+  <!-- Accessibility row highlighted GREEN -->
+  <path android:fillColor="#00e676" android:fillAlpha="0.2"
+      android:strokeColor="#00e676" android:strokeWidth="1"
+      android:pathData="M36,46 L84,46 Q85,46 85,47 L85,56 Q85,57 84,57 L36,57 Q35,57 35,56 L35,47 Q35,46 36,46 Z"/>
+  <!-- Accessibility icon -->
+  <path android:fillColor="#00e676"
+      android:pathData="M43,48.5 A3.5,3.5 0,1,0 43,55.5 A3.5,3.5 0,1,0 43,48.5 Z"/>
+  <path android:fillColor="#00e676"
+      android:pathData="M41,56.5 L43,60 L45,56.5"/>
+  <!-- Accessibility text label -->
+  <path android:fillColor="#00e676"
+      android:pathData="M49,50 L72,50 Q72.5,50 72.5,51 L72.5,52 Q72.5,53 72,53 L49,53 Q48.5,53 48.5,52 L48.5,51 Q48.5,50 49,50 Z"/>
+  <path android:fillColor="#555555"
+      android:pathData="M49,54 L64,54 Q64.5,54 64.5,55 L64.5,55.5 Q64.5,56 64,56 L49,56 Q48.5,56 48.5,55.5 L48.5,55 Q48.5,54 49,54 Z"/>
+  <!-- Arrow pointing right to accessibility row -->
+  <path android:fillColor="#00e676"
+      android:pathData="M80,51 L84,51.5 L80,52 Z"/>
+
+  <path android:fillColor="#222222"
+      android:pathData="M36,59 L84,59 Q85,59 85,60 L85,69 Q85,70 84,70 L36,70 Q35,70 35,69 L35,60 Q35,59 36,59 Z"/>
+
+  <!-- Arrow from phone to next step -->
+  <path android:fillColor="#00e676" android:strokeColor="#00e676" android:strokeWidth="1.5"
+      android:pathData="M95,58 L105,58"/>
+  <path android:fillColor="#00e676"
+      android:pathData="M103,55 L108,58 L103,61 Z"/>
+
+  <!-- Second phone - toggle screen -->
+  <path android:fillColor="#1a1a1a" android:strokeColor="#333333" android:strokeWidth="1.5"
+      android:pathData="M110,8 Q110,4 114,4 L166,4 Q170,4 170,8 L170,112 Q170,116 166,116 L114,116 Q110,116 110,112 Z"/>
+  <path android:fillColor="#0d0d0d"
+      android:pathData="M113,14 L167,14 L167,110 L113,110 Z"/>
+  <path android:fillColor="#333333"
+      android:pathData="M132,113 L148,113 Q150,113 150,114 L150,114.5 Q150,115 148,115 L132,115 Q130,115 130,114.5 L130,114 Q130,113 132,113 Z"/>
+
+  <!-- Back arrow header -->
+  <path android:fillColor="#555555"
+      android:pathData="M116,18 L118,16 L116,18 L118,20 Z"/>
+  <path android:fillColor="#ffffff"
+      android:pathData="M120,17 L155,17 Q155.5,17 155.5,18 L155.5,19.5 Q155.5,20.5 155,20.5 L120,20.5 Q119.5,20.5 119.5,19.5 L119.5,18 Q119.5,17 120,17 Z"/>
+
+  <!-- Service name -->
+  <path android:fillColor="#00e676"
+      android:pathData="M116,26 L162,26 Q163,26 163,27.5 L163,29.5 Q163,31 162,31 L116,31 Q115,31 115,29.5 L115,27.5 Q115,26 116,26 Z"/>
+
+  <!-- Toggle ON -->
+  <path android:fillColor="#00e676"
+      android:pathData="M145,38 Q145,35 148,35 L158,35 Q161,35 161,38 Q161,41 158,41 L148,41 Q145,41 145,38 Z"/>
+  <path android:fillColor="#ffffff"
+      android:pathData="M156,36.5 A1.5,1.5 0,1,0 156,39.5 A1.5,1.5 0,1,0 156,36.5 Z"/>
+
+  <!-- "ON" label -->
+  <path android:fillColor="#00e676"
+      android:pathData="M135,36.5 L143,36.5 Q143.5,36.5 143.5,37.5 L143.5,38.5 Q143.5,39.5 143,39.5 L135,39.5 Q134.5,39.5 134.5,38.5 L134.5,37.5 Q134.5,36.5 135,36.5 Z"/>
+
+  <!-- Allow popup -->
+  <path android:fillColor="#1f1f1f" android:strokeColor="#00e676" android:strokeWidth="1"
+      android:pathData="M117,55 L163,55 Q165,55 165,57 L165,80 Q165,82 163,82 L117,82 Q115,82 115,80 L115,57 Q115,55 117,55 Z"/>
+  <path android:fillColor="#666666"
+      android:pathData="M120,59 L160,59 Q161,59 161,60 L161,64 Q161,65 160,65 L120,65 Q119,65 119,64 L119,60 Q119,59 120,59 Z"/>
+  <path android:fillColor="#444444"
+      android:pathData="M120,66 L155,66 Q155.5,66 155.5,67 L155.5,68 Q155.5,69 155,69 L120,69 Q119.5,69 119.5,68 L119.5,67 Q119.5,66 120,66 Z"/>
+  <!-- ALLOW button -->
+  <path android:fillColor="#00e676"
+      android:pathData="M130,72 L160,72 Q162,72 162,74 L162,77 Q162,79 160,79 L130,79 Q128,79 128,77 L128,74 Q128,72 130,72 Z"/>
+  <path android:fillColor="#000000"
+      android:pathData="M136,74.5 L155,74.5 Q155.5,74.5 155.5,75.5 L155.5,76.5 Q155.5,77.5 155,77.5 L136,77.5 Q135.5,77.5 135.5,76.5 L135.5,75.5 Q135.5,74.5 136,74.5 Z"/>
+
+</vector>
