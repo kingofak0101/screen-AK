@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lord Panel · Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<script src="/i18n.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --obsidian:#07080d;
+  --stone:#0f1018;
+  --stone2:#161820;
+  --gold:#c9a84c;
+  --gold2:#e8c878;
+  --gold3:#f5e090;
+  --gold-dim:rgba(201,168,76,.14);
+  --gold-glow:rgba(201,168,76,.35);
+  --ember:#e8621a;
+  --blood:#8b0000;
+  --stone-gray:#2a2a35;
+  --text:#f0e6cc;
+  --text-dim:#9a8a6a;
+  --text-faint:#5a4a2a;
+  --red:#c0392b;
+  --r:12px;
+}
+html,body{
+  min-height:100dvh;
+  background:var(--obsidian);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+body{
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;position:relative;overflow:hidden;
+}
+
+/* ── Animated background ── */
+.bg-layer{
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(139,0,0,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 80% 90%, rgba(232,98,26,.08) 0%, transparent 50%);
+  pointer-events:none;z-index:0;
+  animation:bgBreath 5s ease-in-out infinite;
+}
+@keyframes bgBreath{
+  0%,100%{opacity:.8;}
+  50%{opacity:1;}
+}
+
+/* Particle embers */
+.embers{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.ember{
+  position:absolute;
+  width:2px;height:2px;
+  border-radius:50%;
+  background:var(--gold);
+  animation:floatUp var(--dur,8s) var(--delay,0s) ease-in infinite;
+  opacity:0;
+}
+@keyframes floatUp{
+  0%{transform:translateY(100vh) translateX(0) scale(1);opacity:0;}
+  10%{opacity:.8;}
+  90%{opacity:.3;}
+  100%{transform:translateY(-20px) translateX(var(--drift,20px)) scale(0);opacity:0;}
+}
+
+/* Stone grid overlay */
+.stone-grid{
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
+}
+
+/* ── Wrap ── */
+.wrap{width:100%;max-width:380px;position:relative;z-index:1;}
+
+/* ── Logo area ── */
+.logo-area{text-align:center;margin-bottom:44px;position:relative;}
+
+
+/* LORD PANEL title */
+.logo-title{
+  font-family:'Cinzel',serif;
+  font-size:36px;font-weight:900;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  line-height:1;
+  position:relative;
+  display:inline-block;
+  color:transparent;
+  white-space:nowrap;
+}
+.logo-title::before{
+  content:'LORD PANEL';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+  background:linear-gradient(180deg, var(--gold3) 0%, var(--gold) 45%, #7a5010 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;white-space:nowrap;
+}
+.logo-title::after{
+  content:'LORD PANEL';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+  background:linear-gradient(105deg,
+    transparent 20%,
+    rgba(255,245,180,.95) 40%,
+    rgba(255,255,220,1) 50%,
+    rgba(255,245,180,.95) 60%,
+    transparent 80%
+  );
+  background-size:250% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;white-space:nowrap;
+  animation:titleShine 3s ease-in-out infinite;
+}
+.logo-title{
+  filter:drop-shadow(0 0 16px rgba(201,168,76,.7)) drop-shadow(0 0 40px rgba(201,168,76,.35));
+  animation:titleGlow 3s ease-in-out infinite;
+}
+@keyframes titleShine{
+  0%{background-position:200% center;}
+  100%{background-position:-50% center;}
+}
+@keyframes titleGlow{
+  0%,100%{filter:drop-shadow(0 0 12px rgba(201,168,76,.6)) drop-shadow(0 0 32px rgba(201,168,76,.3));}
+  50%{filter:drop-shadow(0 0 24px rgba(255,220,80,.95)) drop-shadow(0 0 60px rgba(201,168,76,.55));}
+}
+.logo-ghost{
+  font-family:'Cinzel',serif;
+  font-size:36px;font-weight:900;letter-spacing:6px;text-transform:uppercase;
+  -webkit-text-fill-color:transparent;color:transparent;display:block;
+  line-height:1;text-align:center;white-space:nowrap;
+}
+.logo-sub{
+  font-family:'Cinzel',serif;
+  font-size:10px;font-weight:400;
+  letter-spacing:5px;
+  color:var(--text-dim);
+  text-transform:uppercase;
+  margin-top:6px;
+  display:block;
+}
+
+/* ── Card ── */
+.card{
+  background:linear-gradient(160deg, #12131e 0%, #0e0f1a 100%);
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:18px;
+  padding:32px 28px;
+  position:relative;
+  overflow:hidden;
+  animation:cardEntrance .7s cubic-bezier(.25,.8,.25,1) both, cardGlow 4s ease-in-out infinite;
+}
+/* Ornate corner flourishes */
+.card::before,.card::after{
+  content:'';
+  position:absolute;
+  width:28px;height:28px;
+  border-color:var(--gold);
+  border-style:solid;
+  opacity:.5;
+}
+.card::before{top:10px;left:10px;border-width:2px 0 0 2px;border-radius:4px 0 0 0;}
+.card::after{top:10px;right:10px;border-width:2px 2px 0 0;border-radius:0 4px 0 0;}
+.card-inner::before,.card-inner::after{
+  content:'';
+  position:absolute;
+  width:28px;height:28px;
+  border-color:var(--gold);
+  border-style:solid;
+  opacity:.5;
+}
+.card-inner::before{bottom:10px;left:10px;border-width:0 0 2px 2px;border-radius:0 0 0 4px;}
+.card-inner::after{bottom:10px;right:10px;border-width:0 2px 2px 0;border-radius:0 0 4px 0;}
+.card-inner{position:relative;}
+@keyframes cardEntrance{
+  from{opacity:0;transform:translateY(24px) scale(.97);}
+  to{opacity:1;transform:none;}
+}
+@keyframes cardGlow{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0), 0 20px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(201,168,76,.08);}
+  50%{box-shadow:0 0 0 3px rgba(201,168,76,.18), 0 24px 80px rgba(0,0,0,.7), inset 0 1px 0 rgba(201,168,76,.15), 0 0 40px rgba(201,168,76,.1);}
+}
+
+/* Divider line inside card */
+.card-divider{
+  height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(201,168,76,.4) 50%, transparent 100%);
+  margin:0 0 24px;
+}
+
+/* ── Fields ── */
+.field{margin-bottom:20px;}
+label{
+  display:block;
+  font-family:'Cinzel',serif;
+  font-size:9px;font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:10px;
+  opacity:.9;
+}
+.input-wrap{
+  position:relative;
+}
+.input-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--gold);opacity:.5;pointer-events:none;
+}
+input{
+  width:100%;
+  background:rgba(7,8,13,.8);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:10px;
+  padding:14px 16px 14px 42px;
+  color:var(--text);
+  font-size:15px;
+  outline:none;
+  font-family:'Inter',sans-serif;
+  transition:border-color .25s, box-shadow .25s;
+  letter-spacing:.3px;
+}
+input:focus{
+  border-color:rgba(201,168,76,.7);
+  box-shadow:0 0 0 3px rgba(201,168,76,.08), 0 0 20px rgba(201,168,76,.12);
+}
+input::placeholder{
+  color:var(--text-faint);
+  font-style:italic;
+  letter-spacing:.5px;
+}
+
+/* ── Error ── */
+.err{
+  background:rgba(139,0,0,.12);
+  border:1px solid rgba(192,57,43,.35);
+  border-radius:10px;
+  padding:11px 14px;
+  font-size:13px;
+  color:#e74c3c;
+  margin-bottom:20px;
+  display:none;
+  font-family:'Inter',sans-serif;
+}
+
+/* ── Submit button ── */
+.btn{
+  width:100%;
+  background:linear-gradient(135deg, #8a6020 0%, var(--gold) 40%, var(--gold2) 60%, var(--gold) 80%, #8a6020 100%);
+  background-size:200% 100%;
+  color:#0f0a02;
+  border:none;
+  border-radius:10px;
+  padding:16px;
+  font-family:'Cinzel',serif;
+  font-size:14px;font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+  margin-top:6px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:box-shadow .25s, background-position .4s;
+  box-shadow:0 4px 20px rgba(201,168,76,.35), 0 0 0 1px rgba(201,168,76,.2);
+  animation:btnShimmer 4s linear infinite;
+}
+.btn:hover:not(:disabled){
+  background-position:100% 0;
+  box-shadow:0 8px 32px rgba(201,168,76,.55), 0 0 0 2px rgba(201,168,76,.3);
+}
+.btn:active:not(:disabled){transform:translateY(1px);box-shadow:0 2px 12px rgba(201,168,76,.35);}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+@keyframes btnShimmer{
+  0%{background-position:0% 0;}
+  100%{background-position:200% 0;}
+}
+
+/* ── Loading spinner ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin-svg{animation:spin 1s linear infinite;}
+
+/* ── Entrance animations ── */
+.logo-area{animation:fadeSlideUp .6s cubic-bezier(.25,.8,.25,1) both;}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<div class="stone-grid"></div>
+
+<!-- Floating embers -->
+<div class="embers" id="embersContainer"></div>
+
+<!-- Language switcher -->
+<div id="loginLang" style="position:fixed;top:14px;right:16px;display:flex;gap:6px;z-index:9999;"></div>
+
+<div class="wrap">
+  <div class="logo-area">
+    <div style="position:relative;display:inline-block;">
+      <span class="logo-ghost" aria-hidden="true">LORD PANEL</span>
+      <div class="logo-title" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1;">LORD PANEL</div>
+    </div>
+    <span class="logo-sub">Command &amp; Control</span>
+  </div>
+
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-divider"></div>
+      <div class="err" id="err"></div>
+
+      <div class="field">
+        <label data-i18n="login.username">Username</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          <input id="user" type="text" placeholder="Enter username" data-i18n-ph="login.placeholder.user" autocomplete="username"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label data-i18n="login.password">Password</label>
+        <div class="input-wrap">
+          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <input id="pass" type="password" placeholder="Enter password" data-i18n-ph="login.placeholder.pass" autocomplete="current-password"/>
+        </div>
+      </div>
+
+      <button class="btn" id="btn" onclick="login()" data-i18n="login.btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+        Login
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Spawn embers */
+(function(){
+  const c=document.getElementById('embersContainer');
+  const count=30;
+  for(let i=0;i<count;i++){
+    const e=document.createElement('div');
+    e.className='ember';
+    const x=Math.random()*100;
+    const dur=6+Math.random()*10;
+    const delay=Math.random()*10;
+    const drift=(Math.random()-0.5)*80;
+    const size=1+Math.random()*2.5;
+    const colors=['var(--gold)','var(--gold2)','var(--ember)','rgba(201,168,76,.6)'];
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    e.style.cssText=`left:${x}%;bottom:0;width:${size}px;height:${size}px;background:${color};--dur:${dur}s;--delay:${delay}s;--drift:${drift}px;`;
+    c.appendChild(e);
+  }
+})();
+
+if(localStorage.getItem('token'))location.href='/dashboard';
+
+
+async function login(){
+  const btn=document.getElementById('btn'),err=document.getElementById('err');
+  const user=document.getElementById('user').value.trim(),pass=document.getElementById('pass').value;
+  if(!user||!pass){showErr(i18n.t('login.errEmpty'));return;}
+  btn.disabled=true;
+  btn.innerHTML='<svg class="spin-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="8"/></svg> '+i18n.t('login.loggingIn');
+  try{
+    const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:user,password:pass})});
+    const d=await r.json();
+    if(!r.ok){showErr(d.error||i18n.t('login.errFailed'));return;}
+    localStorage.setItem('token',d.token);
+    localStorage.setItem('role',d.role);
+    localStorage.setItem('username',d.username);
+    location.href='/dashboard';
+  }catch(e){showErr(i18n.t('login.errConn'));}
+  finally{
+    btn.disabled=false;
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> '+i18n.t('login.btn');
+  }
+}
+function showErr(m){const e=document.getElementById('err');e.textContent=m;e.style.display='block';}
+document.addEventListener('keydown',e=>{if(e.key==='Enter')login();});
+i18n.injectLangSwitcher('loginLang');
+</script>
+</body>
+</html>

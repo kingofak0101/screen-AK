@@ -1,0 +1,5343 @@
+{
+  "users": [
+    {
+      "id": "fe6fd9bf40df4e9ec5f9f306",
+      "username": "admin",
+      "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "token": "69b3e12e91acf04c1aeda6ed",
+      "role": "admin",
+      "createdAt": 1775348655329
+    }
+  ],
+  "devices": [
+    {
+      "id": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "createdAt": 1775550309642,
+      "name": "V2318",
+      "model": "V2318",
+      "brand": "vivo",
+      "android": "16",
+      "battery": 35,
+      "sim1": "Jio True5G — Jio 917498832294",
+      "sim2": "airtel +917758922717",
+      "online": true,
+      "lastSeen": 1775551954510,
+      "ip": "117.99.247.189",
+      "isDeviceOwner": false,
+      "screenOn": true,
+      "accessibilityEnabled": true,
+      "screenW": 1080,
+      "screenH": 2311
+    },
+    {
+      "id": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "createdAt": 1776677631659,
+      "name": "CPH2505",
+      "model": "CPH2505",
+      "brand": "OPPO",
+      "android": "13",
+      "battery": 35,
+      "sim1": "JIO 4G — Jio 918999253541",
+      "sim2": "",
+      "online": true,
+      "lastSeen": 1776678641448,
+      "ip": "47.31.115.52",
+      "isDeviceOwner": false,
+      "screenOn": true,
+      "accessibilityEnabled": true,
+      "screenW": 1080,
+      "screenH": 2305
+    },
+    {
+      "id": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "createdAt": 1777119324303,
+      "name": "V2318",
+      "model": "V2318",
+      "brand": "vivo",
+      "android": "16",
+      "battery": 69,
+      "sim1": "Jio True5G — Jio 917498832294",
+      "sim2": "airtel +917758922717",
+      "online": true,
+      "lastSeen": 1777120044580,
+      "ip": "49.36.47.96",
+      "isDeviceOwner": false,
+      "screenOn": true,
+      "accessibilityEnabled": true
+    }
+  ],
+  "sms": [],
+  "commands": [
+    {
+      "id": "ce1c61880c8d7e6d1c2f6253",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550393722
+    },
+    {
+      "id": "c06549aa7ca1428346c53241",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 973,
+        "y1": 1264,
+        "x2": 1080,
+        "y2": 562,
+        "duration": 496
+      },
+      "status": "done",
+      "createdAt": 1775550401473
+    },
+    {
+      "id": "6c07edc29c75ba82bc211a0a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "silent"
+      },
+      "status": "done",
+      "createdAt": 1775550401818
+    },
+    {
+      "id": "6f3fe97c6a2fc348f4102292",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 829,
+        "y1": 1050,
+        "x2": 860,
+        "y2": 1809,
+        "duration": 216
+      },
+      "status": "done",
+      "createdAt": 1775550403122
+    },
+    {
+      "id": "bbf9c73074e693fd6e0c8e9e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 965,
+        "y": 1831
+      },
+      "status": "done",
+      "createdAt": 1775550417372
+    },
+    {
+      "id": "10153989800b6fcff8503efd",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550420482
+    },
+    {
+      "id": "0b91d12b78c339b165803715",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550422208
+    },
+    {
+      "id": "b339560c56fe787bfaa058e1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550427816
+    },
+    {
+      "id": "984fca08bb804f417f84f530",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550432804
+    },
+    {
+      "id": "d791f8350e44cfcf6c9322b9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550435891
+    },
+    {
+      "id": "e34709d29cfca57afa70e05f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 878,
+        "y": 944
+      },
+      "status": "done",
+      "createdAt": 1775550437232
+    },
+    {
+      "id": "60cbcc99666ecfcfaed67e20",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 834,
+        "y": 1178
+      },
+      "status": "done",
+      "createdAt": 1775550438370
+    },
+    {
+      "id": "f976ae91e25fad6ec58727f7",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 898,
+        "y1": 1085,
+        "x2": 521,
+        "y2": 1269,
+        "duration": 158
+      },
+      "status": "done",
+      "createdAt": 1775550440601
+    },
+    {
+      "id": "0c5b7d5e3eaa229ef22a5197",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 506,
+        "y1": 1334,
+        "x2": 815,
+        "y2": 1178,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550441210
+    },
+    {
+      "id": "057a8a2c848240b7246bf3b0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 875,
+        "y1": 1170,
+        "x2": 553,
+        "y2": 1258,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550441652
+    },
+    {
+      "id": "12272efbed6e65c5848a44ac",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 765,
+        "y1": 1254,
+        "x2": 488,
+        "y2": 1364,
+        "duration": 156
+      },
+      "status": "done",
+      "createdAt": 1775550442042
+    },
+    {
+      "id": "7fbb6eeac86ed706569d8226",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 506,
+        "y1": 1314,
+        "x2": 634,
+        "y2": 1299,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550442447
+    },
+    {
+      "id": "eb1fa25fd9f626c2ff31c0b7",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 688,
+        "y1": 1288,
+        "x2": 444,
+        "y2": 1427,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550442850
+    },
+    {
+      "id": "dc3979c1d70f2fd02476aeac",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 429,
+        "y1": 1439,
+        "x2": 720,
+        "y2": 1288,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550443221
+    },
+    {
+      "id": "405f25aa688d7289bc838736",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 829,
+        "y1": 1273,
+        "x2": 626,
+        "y2": 1193,
+        "duration": 200
+      },
+      "status": "done",
+      "createdAt": 1775550443594
+    },
+    {
+      "id": "9aa99edfbafa3615de62c3d6",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 859,
+        "y1": 1464,
+        "x2": 799,
+        "y2": 1141,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550444280
+    },
+    {
+      "id": "2102bde32c8f57c3d4efca19",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 908,
+        "y1": 635,
+        "x2": 770,
+        "y2": 998,
+        "duration": 175
+      },
+      "status": "done",
+      "createdAt": 1775550445895
+    },
+    {
+      "id": "29cb56763fa3af0b505162e7",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 650,
+        "y1": 380,
+        "x2": 851,
+        "y2": 0,
+        "duration": 166
+      },
+      "status": "done",
+      "createdAt": 1775550447756
+    },
+    {
+      "id": "3df391fb6af3c24ebb0b20d7",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550466061
+    },
+    {
+      "id": "5f691e3767bd84987d2de50e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "silent"
+      },
+      "status": "done",
+      "createdAt": 1775550490511
+    },
+    {
+      "id": "873b0a3196e45c69d1c5be91",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550512767
+    },
+    {
+      "id": "1f05182af0a30f2ab91a555a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550517400
+    },
+    {
+      "id": "b6c99752a05497f0f5b1f618",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550518086
+    },
+    {
+      "id": "b7bb409d2906d4a2b3a1f8a8",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 782,
+        "y1": 1891,
+        "x2": 861,
+        "y2": 1148,
+        "duration": 209
+      },
+      "status": "done",
+      "createdAt": 1775550520738
+    },
+    {
+      "id": "3ae120e8349c5a4deb83c278",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550526159
+    },
+    {
+      "id": "ea7b59d282f07bfd7da5b9f4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550528269
+    },
+    {
+      "id": "180a62dc80ce8bf0c7fb4d1c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 952,
+        "y1": 1074,
+        "x2": 477,
+        "y2": 1220,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550532539
+    },
+    {
+      "id": "6a9aa91a7fc44a5261e46899",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 581,
+        "y1": 1174,
+        "x2": 1080,
+        "y2": 1073,
+        "duration": 164
+      },
+      "status": "done",
+      "createdAt": 1775550533764
+    },
+    {
+      "id": "f62435e311b548e2808d73b3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 573,
+        "y1": 1459,
+        "x2": 1080,
+        "y2": 1271,
+        "duration": 220
+      },
+      "status": "done",
+      "createdAt": 1775550534729
+    },
+    {
+      "id": "c7375f0c687a57971747e4f6",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550536149
+    },
+    {
+      "id": "2b0d6a972ef647d5f3fc1418",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550545936
+    },
+    {
+      "id": "f2e0585c704224fd7052a5df",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550547596
+    },
+    {
+      "id": "f2ddfaf393e91e5275b3ba60",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550557614
+    },
+    {
+      "id": "79b0deaa529afee7bddb3e62",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550560149
+    },
+    {
+      "id": "cbc82f975aaf7f67e8a27423",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_front",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550570419
+    },
+    {
+      "id": "6c6cfc50cfa8155b0015a20c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550573639
+    },
+    {
+      "id": "031df3a8fe1b8d7485b7be2e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_camera",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550587849
+    },
+    {
+      "id": "79f28335b7a4b8ddac4b33eb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_front",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550588751
+    },
+    {
+      "id": "21de43b2f9dbb77af5772ed4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 943,
+        "y1": 1199,
+        "x2": 572,
+        "y2": 1209,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1775550592549
+    },
+    {
+      "id": "5cc8705614af6fbbacc6c59a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 880,
+        "y1": 1086,
+        "x2": 219,
+        "y2": 1169,
+        "duration": 168
+      },
+      "status": "done",
+      "createdAt": 1775550593289
+    },
+    {
+      "id": "d43ad7ce9659894e13b983fc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 811,
+        "y1": 1346,
+        "x2": 180,
+        "y2": 1676,
+        "duration": 212
+      },
+      "status": "done",
+      "createdAt": 1775550593879
+    },
+    {
+      "id": "c9b0e072bdc543d4914bbf3a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 446,
+        "y1": 1352,
+        "x2": 1080,
+        "y2": 1190,
+        "duration": 230
+      },
+      "status": "done",
+      "createdAt": 1775550594545
+    },
+    {
+      "id": "f4f32b6874f306a479678823",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 446,
+        "y1": 997,
+        "x2": 613,
+        "y2": 129,
+        "duration": 189
+      },
+      "status": "done",
+      "createdAt": 1775550597229
+    },
+    {
+      "id": "87334e1832f76106d3cf021a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 737,
+        "y1": 1466,
+        "x2": 9,
+        "y2": 1622,
+        "duration": 156
+      },
+      "status": "done",
+      "createdAt": 1775550598459
+    },
+    {
+      "id": "2dedcf4037d8d2f1b46c6f39",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550602100
+    },
+    {
+      "id": "0f3fc3ef52a070fac5763d15",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550602819
+    },
+    {
+      "id": "6d8dd74cb04f01ef044c1cee",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 807,
+        "y1": 1300,
+        "x2": 178,
+        "y2": 1543,
+        "duration": 218
+      },
+      "status": "done",
+      "createdAt": 1775550606019
+    },
+    {
+      "id": "043d19cdb74c23d045e7544e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 488,
+        "y1": 1335,
+        "x2": 1079,
+        "y2": 1075,
+        "duration": 239
+      },
+      "status": "done",
+      "createdAt": 1775550607640
+    },
+    {
+      "id": "efc2ac810920a8353a5699b3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 725,
+        "y1": 1679,
+        "x2": 826,
+        "y2": 444,
+        "duration": 243
+      },
+      "status": "done",
+      "createdAt": 1775550608390
+    },
+    {
+      "id": "6b21caac0f3f043779486a0f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 850,
+        "y1": 1233,
+        "x2": 32,
+        "y2": 1442,
+        "duration": 243
+      },
+      "status": "done",
+      "createdAt": 1775550610209
+    },
+    {
+      "id": "b20fcf5dc1ab4907752361d0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 882,
+        "y1": 1839,
+        "x2": 918,
+        "y2": 926,
+        "duration": 250
+      },
+      "status": "done",
+      "createdAt": 1775550614750
+    },
+    {
+      "id": "4896035d678856bcef78eb63",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550615759
+    },
+    {
+      "id": "9b40239ca2e44a3ee9bee1c8",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550617079
+    },
+    {
+      "id": "6a77107c55f0c2a64beca9a1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550621409
+    },
+    {
+      "id": "1f248b183e4f94232d106ec4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 759,
+        "y1": 1289,
+        "x2": 144,
+        "y2": 1469,
+        "duration": 181
+      },
+      "status": "done",
+      "createdAt": 1775550631894
+    },
+    {
+      "id": "ea65fe964a996532ffbbd452",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 854,
+        "y1": 1364,
+        "x2": 248,
+        "y2": 1717,
+        "duration": 174
+      },
+      "status": "done",
+      "createdAt": 1775550634149
+    },
+    {
+      "id": "4e0da67aa4f2557ed3dbc523",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 391,
+        "y1": 1544,
+        "x2": 1079,
+        "y2": 1453,
+        "duration": 217
+      },
+      "status": "done",
+      "createdAt": 1775550634599
+    },
+    {
+      "id": "2cb27729a46eccf46e887236",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "silent"
+      },
+      "status": "done",
+      "createdAt": 1775550637880
+    },
+    {
+      "id": "63e77de795b8ae6e57a45f7d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 639,
+        "y1": 1414,
+        "x2": 74,
+        "y2": 1501,
+        "duration": 168
+      },
+      "status": "done",
+      "createdAt": 1775550639449
+    },
+    {
+      "id": "eda2a47a524b0fa0ef2adac3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550644989
+    },
+    {
+      "id": "24807583e20ee5fbd46e1835",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550648856
+    },
+    {
+      "id": "041b3d67937cb622112babb4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550659846
+    },
+    {
+      "id": "288c7d177db2b7ae8bf4bfcb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550671366
+    },
+    {
+      "id": "46e8fe514d0dce417f205b20",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 880,
+        "y1": 1449,
+        "x2": 269,
+        "y2": 1557,
+        "duration": 173
+      },
+      "status": "done",
+      "createdAt": 1775550672972
+    },
+    {
+      "id": "0c8647c5c7ff26c5db9a2731",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 1027,
+        "y1": 1194,
+        "x2": 339,
+        "y2": 1395,
+        "duration": 152
+      },
+      "status": "done",
+      "createdAt": 1775550673792
+    },
+    {
+      "id": "f6006bad16dd87537a5e0f32",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 384,
+        "y1": 1341,
+        "x2": 1079,
+        "y2": 1223,
+        "duration": 286
+      },
+      "status": "done",
+      "createdAt": 1775550674422
+    },
+    {
+      "id": "a2f7c1ed4b534c10759625e5",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550718511
+    },
+    {
+      "id": "9ded7fee69963d835dc16de1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "request_permissions",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550790589
+    },
+    {
+      "id": "2264dc1449c5136ce7bb85b0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550807319
+    },
+    {
+      "id": "b25feff51eba083e9c381ffb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 849,
+        "y1": 1289,
+        "x2": 80,
+        "y2": 1521,
+        "duration": 166
+      },
+      "status": "done",
+      "createdAt": 1775550809409
+    },
+    {
+      "id": "0149acb8641f0c164ff3dec2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 750,
+        "y1": 1248,
+        "x2": 75,
+        "y2": 1435,
+        "duration": 169
+      },
+      "status": "done",
+      "createdAt": 1775550810629
+    },
+    {
+      "id": "14677aa1d775c7402ae310fa",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550821271
+    },
+    {
+      "id": "36eecbc1b2d54a0c3902efe2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550821724
+    },
+    {
+      "id": "aa51903b4118a03671d65f57",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550826971
+    },
+    {
+      "id": "0ec34e5dfbbae76d74e0d8e2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "block_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550849541
+    },
+    {
+      "id": "32fc550bd01d8f5711421065",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1775550863939
+    },
+    {
+      "id": "283344a47bb4ac1ec0f64604",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550870329
+    },
+    {
+      "id": "dbfbf7552649df80cab5d65d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550870330
+    },
+    {
+      "id": "f7856fa26040c352897e997a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550870831
+    },
+    {
+      "id": "67310203dd7fccf590bd3194",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550871831
+    },
+    {
+      "id": "50f9f55aaa31e657ea9952dc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550872326
+    },
+    {
+      "id": "c9c8bf7d6979cb801e704984",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550906732
+    },
+    {
+      "id": "2f96acb8114fa543dd585c03",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550924710
+    },
+    {
+      "id": "06f5cf5503da647a4af28d9a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550927459
+    },
+    {
+      "id": "93dff8680b634697f53f2130",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550929500
+    },
+    {
+      "id": "feac6565730ab83a745193bf",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550935679
+    },
+    {
+      "id": "b811a6c231c70c4326841131",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550944484
+    },
+    {
+      "id": "c103f66366accd5962ed140c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775550951529
+    },
+    {
+      "id": "3f997945d9361816b3377714",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550962719
+    },
+    {
+      "id": "ae86bf6a420cae77b9b47b78",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775550965709
+    },
+    {
+      "id": "36828ae9e7f83566798728e5",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551012512
+    },
+    {
+      "id": "5af2547643caa8484267c00f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551031051
+    },
+    {
+      "id": "999efb35b69b3db7f9c3d90c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551033381
+    },
+    {
+      "id": "68c64d50630c1d1a9e9d1120",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551038112
+    },
+    {
+      "id": "5ad207ac1937dbdd6288e922",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551050771
+    },
+    {
+      "id": "3a54f9ca0729682d92ceb117",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551054052
+    },
+    {
+      "id": "102ee5a41362a78b1ba846e8",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "request_permissions",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551065311
+    },
+    {
+      "id": "a18aa949ece64752f2dcc3e1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "silent"
+      },
+      "status": "done",
+      "createdAt": 1775551076021
+    },
+    {
+      "id": "36e0eab93f23021871e68d3c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 341,
+        "y": 613
+      },
+      "status": "done",
+      "createdAt": 1775551088969
+    },
+    {
+      "id": "6b96130349f7d9e7a74690f9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551134711
+    },
+    {
+      "id": "9be871a7b290916f0841aead",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 158,
+        "y": 1112
+      },
+      "status": "done",
+      "createdAt": 1775551139331
+    },
+    {
+      "id": "f0cdadcd87f6c66fa47811ab",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 696,
+        "y": 419
+      },
+      "status": "done",
+      "createdAt": 1775551148841
+    },
+    {
+      "id": "a850018a33d59378a86d26b1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 552,
+        "y": 576
+      },
+      "status": "done",
+      "createdAt": 1775551156391
+    },
+    {
+      "id": "20c1b1469a41019814b333da",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 72,
+        "y": 1606
+      },
+      "status": "done",
+      "createdAt": 1775551166141
+    },
+    {
+      "id": "23335b184fd1a0be99b3c030",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 132,
+        "y": 1592
+      },
+      "status": "done",
+      "createdAt": 1775551171481
+    },
+    {
+      "id": "d27fc1b4d00de40e140302f0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 590,
+        "y": 1876
+      },
+      "status": "done",
+      "createdAt": 1775551188279
+    },
+    {
+      "id": "86412184e15658b10b41f8bf",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 695,
+        "y": 1888
+      },
+      "status": "done",
+      "createdAt": 1775551188909
+    },
+    {
+      "id": "71e1c04d122913428c7b17af",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 552,
+        "y": 237
+      },
+      "status": "done",
+      "createdAt": 1775551201646
+    },
+    {
+      "id": "5c546745a2a7d7b732cb77fa",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 552,
+        "y": 237
+      },
+      "status": "done",
+      "createdAt": 1775551203854
+    },
+    {
+      "id": "f57cfbebd594a8dd480dc52b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 552,
+        "y": 237
+      },
+      "status": "done",
+      "createdAt": 1775551204366
+    },
+    {
+      "id": "2719c3ab23a42dcb835cd011",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 552,
+        "y": 237
+      },
+      "status": "done",
+      "createdAt": 1775551204551
+    },
+    {
+      "id": "c7cc2f671ed05763f8aa6a7f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 72,
+        "y": 1606
+      },
+      "status": "done",
+      "createdAt": 1775551208856
+    },
+    {
+      "id": "2885828087abc73f71b861da",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 132,
+        "y": 1820
+      },
+      "status": "done",
+      "createdAt": 1775551210969
+    },
+    {
+      "id": "ca7ce6c51a1e77a25e42b437",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 706,
+        "y1": 1753,
+        "x2": 859,
+        "y2": 997,
+        "duration": 241
+      },
+      "status": "done",
+      "createdAt": 1775551239794
+    },
+    {
+      "id": "0e2a1e7c0258a6389fa89bbc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551242511
+    },
+    {
+      "id": "624f42f31730c50bc8ecebc2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 923,
+        "y": 1112
+      },
+      "status": "done",
+      "createdAt": 1775551246356
+    },
+    {
+      "id": "bbaee353b0d9ac8229c12618",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551261660
+    },
+    {
+      "id": "69059372d7427e463057bfdc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 959,
+        "y1": 1431,
+        "x2": 288,
+        "y2": 1551,
+        "duration": 211
+      },
+      "status": "done",
+      "createdAt": 1775551274614
+    },
+    {
+      "id": "243ebabf7f07594c0200e599",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 542,
+        "y1": 1459,
+        "x2": 1079,
+        "y2": 1414,
+        "duration": 232
+      },
+      "status": "done",
+      "createdAt": 1775551275159
+    },
+    {
+      "id": "242587ea6de3bde47a15c107",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551276899
+    },
+    {
+      "id": "a50fe179126bcc8ae67819b1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551288874
+    },
+    {
+      "id": "556e7ae39aa989e71c2d4c5e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551304054
+    },
+    {
+      "id": "caf428974886fd9b5a894ef2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1775551309099
+    },
+    {
+      "id": "cdb6325e8e5c30790352a430",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551311799
+    },
+    {
+      "id": "69dfa8d759a9f1218f2bc02f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551311801
+    },
+    {
+      "id": "200705b169ca2ad1f723d08f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551312309
+    },
+    {
+      "id": "48899e8af3106446ed6aca80",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551313309
+    },
+    {
+      "id": "84b2a2ede77a49b92a6ccda5",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551313810
+    },
+    {
+      "id": "c7f9117fe4cf3131417feab3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551321160
+    },
+    {
+      "id": "507eff579866901e161e5b0e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551340362
+    },
+    {
+      "id": "6c63c562fba6dd979796a6aa",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551347297
+    },
+    {
+      "id": "c2d0daeb13982521740fb2d3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775551357049
+    },
+    {
+      "id": "e608690fb8ff165aacffe1f6",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551380379
+    },
+    {
+      "id": "e064d52020a4119bfc3886eb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551383219
+    },
+    {
+      "id": "a6444c6bd25b6a3fb4f659b9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551394809
+    },
+    {
+      "id": "fa02307079886216c4df25ec",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551396674
+    },
+    {
+      "id": "596d4a472f4657d8e16666e9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775551398335
+    },
+    {
+      "id": "b34e4f164e320188eee794d9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551404829
+    },
+    {
+      "id": "f76ef07bce6d2f16b3074c8d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775551413910
+    },
+    {
+      "id": "00f41aa326d24109d5559e37",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1775551434009
+    },
+    {
+      "id": "f39840ce6becf7b1e71a77f3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551443622
+    },
+    {
+      "id": "862aa55926810176c2889f5d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 837,
+        "y1": 1546,
+        "x2": 288,
+        "y2": 1707,
+        "duration": 199
+      },
+      "status": "done",
+      "createdAt": 1775551447362
+    },
+    {
+      "id": "a51587b1ded21ec6fa0f0bbb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 761,
+        "y1": 1558,
+        "x2": 325,
+        "y2": 1565,
+        "duration": 120
+      },
+      "status": "done",
+      "createdAt": 1775551448672
+    },
+    {
+      "id": "0d404b8664889fe1eff87b01",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 389,
+        "y1": 1459,
+        "x2": 1079,
+        "y2": 1221,
+        "duration": 175
+      },
+      "status": "done",
+      "createdAt": 1775551449162
+    },
+    {
+      "id": "9900f90938a172ca928d03f2",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 920,
+        "y1": 1481,
+        "x2": 308,
+        "y2": 1777,
+        "duration": 240
+      },
+      "status": "done",
+      "createdAt": 1775551451197
+    },
+    {
+      "id": "207605ed3e61690974c405c9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551455899
+    },
+    {
+      "id": "33eee30199ed530fc17f8df4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551466263
+    },
+    {
+      "id": "9eb53df784434e4219303221",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551555552
+    },
+    {
+      "id": "6d72a4c82f443f575ee18d01",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551593310
+    },
+    {
+      "id": "7cdc3987e82e51603a9a843c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551684020
+    },
+    {
+      "id": "a66f02a271898d72caaea655",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551686559
+    },
+    {
+      "id": "96893156a1082ca39b594201",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551765961
+    },
+    {
+      "id": "7f841adcff4f99b10ef99a3b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1389
+      },
+      "status": "done",
+      "createdAt": 1775551818769
+    },
+    {
+      "id": "f6c633fae575c9301f77e85e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551843206
+    },
+    {
+      "id": "9d178800e4af242b4c14141e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551848446
+    },
+    {
+      "id": "06b99e69e284f4150d6c1eb9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551859149
+    },
+    {
+      "id": "6559509fc04399f3d7899660",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551864891
+    },
+    {
+      "id": "7f2f03b13c4ddf556537164a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551918812
+    },
+    {
+      "id": "cc4aeecfeb1575147527c80b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551921932
+    },
+    {
+      "id": "ebbcab3813a8f156b3a67cb3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551927971
+    },
+    {
+      "id": "8910181b47fb93ba3243ee04",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1775551954522
+    },
+    {
+      "id": "18d47d5635855ad833e3b3ac",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775552008359
+    },
+    {
+      "id": "d6383093bb0ed3b8ab7b4baa",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775552034732
+    },
+    {
+      "id": "89cdd1354c737f55927c9859",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "swipe",
+      "data": {
+        "x1": 482,
+        "y1": 1152,
+        "x2": 0,
+        "y2": 1028,
+        "duration": 149
+      },
+      "status": "pending",
+      "createdAt": 1775552100707
+    },
+    {
+      "id": "6001bf92c95dc33f2260fe63",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625715814
+    },
+    {
+      "id": "5908f76b269dba40eda931f4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625716174
+    },
+    {
+      "id": "a8b231775d32006fde964df1",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625716212
+    },
+    {
+      "id": "827a803a6b808b21b979aa50",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625716252
+    },
+    {
+      "id": "5f1607137eae7bba770c627b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625716611
+    },
+    {
+      "id": "03dcce27853b5f6d7dcd8c9a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625716614
+    },
+    {
+      "id": "5c6c99f6c4bb8011bced6554",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625717014
+    },
+    {
+      "id": "26753dc69cafeabc9c28ff7b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625717018
+    },
+    {
+      "id": "9d52133315d198611f679964",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625717420
+    },
+    {
+      "id": "3a04100eb0ad24c3efc5533c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625717423
+    },
+    {
+      "id": "b6d51f21d42fe33e1c53b5d3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "block_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625878757
+    },
+    {
+      "id": "3da6315a87fdd7842e61d54c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1775625880500
+    },
+    {
+      "id": "edd1a1292be4a14fccd5977a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1776456638976
+    },
+    {
+      "id": "5353ebf1e2bebd71c60927ed",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "recents",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1776456764159
+    },
+    {
+      "id": "658e796bd68a1a9a2e416113",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1776456766788
+    },
+    {
+      "id": "64cb80650e7b75f2f90805bc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1776456768959
+    },
+    {
+      "id": "3444bf83bbc22a406c23e5a0",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1776677715897
+    },
+    {
+      "id": "764895cf73b876c1cf729660",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677720726
+    },
+    {
+      "id": "543bfc2c293d3c530b22448c",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 747,
+        "y1": 1574,
+        "x2": 97,
+        "y2": 1759,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776677722227
+    },
+    {
+      "id": "4b414b97dd44cfae6ef38e72",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 647,
+        "y1": 1717,
+        "x2": 140,
+        "y2": 1836,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776677723937
+    },
+    {
+      "id": "66d24b35b0ce07e68d2b9814",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 734,
+        "y1": 1632,
+        "x2": 89,
+        "y2": 1797,
+        "duration": 163
+      },
+      "status": "done",
+      "createdAt": 1776677725477
+    },
+    {
+      "id": "f19a20cc1af84e682e2acbdb",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 602,
+        "y1": 1728,
+        "x2": 726,
+        "y2": 728,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776677727066
+    },
+    {
+      "id": "1b9f35576b5ad93728ca0774",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 696,
+        "y1": 1635,
+        "x2": 957,
+        "y2": 540,
+        "duration": 349
+      },
+      "status": "done",
+      "createdAt": 1776677730427
+    },
+    {
+      "id": "3bc27c2efe7cff9291390da8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 688,
+        "y1": 1719,
+        "x2": 805,
+        "y2": 909,
+        "duration": 313
+      },
+      "status": "done",
+      "createdAt": 1776677732187
+    },
+    {
+      "id": "49eb7d27371cd75ffbbd5276",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 850,
+        "y1": 2044,
+        "x2": 933,
+        "y2": 1263,
+        "duration": 398
+      },
+      "status": "done",
+      "createdAt": 1776677735066
+    },
+    {
+      "id": "a78898b61477fa664d562900",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677739992
+    },
+    {
+      "id": "86dafa219444ae31691d58d7",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "stop_camera",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677747659
+    },
+    {
+      "id": "989b0df91779e28604803cfd",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677750584
+    },
+    {
+      "id": "264f22ca337d4138b434121e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_front",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677767944
+    },
+    {
+      "id": "b80f91ff0c23aebca165bb96",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677806024
+    },
+    {
+      "id": "5fb97eb2a2de713f547254dd",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677845749
+    },
+    {
+      "id": "1211d471acb2000e92ea4581",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677849424
+    },
+    {
+      "id": "0366d3c29cc798459cbb969e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677860345
+    },
+    {
+      "id": "b474e6a94c07633a9cfb71e8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677868026
+    },
+    {
+      "id": "479626ec5170ca893e7ccc4f",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776677886939
+    },
+    {
+      "id": "710d1eb3a7cac2a0bf93bc9a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677902416
+    },
+    {
+      "id": "8dab9aee996ecdb66d284f5a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677916261
+    },
+    {
+      "id": "0b19af7f290be4afecdfb450",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677922785
+    },
+    {
+      "id": "17082b0ac970374a615093ec",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1776677926089
+    },
+    {
+      "id": "889cb6e7f454995004ef19e5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677928452
+    },
+    {
+      "id": "a4b9ce04d74c8ca5c15d7b69",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677928456
+    },
+    {
+      "id": "0eba3fffa44b7d88d0b4ba28",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677928957
+    },
+    {
+      "id": "46cf545a8fe07d5a5daf5fcc",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677929977
+    },
+    {
+      "id": "b251fb3b910293ed72dc5071",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677930461
+    },
+    {
+      "id": "b57cc40c597de12e29d86e5d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1930
+      },
+      "status": "done",
+      "createdAt": 1776677933386
+    },
+    {
+      "id": "55d5cc687cc46fb57bff0da0",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776677934227
+    },
+    {
+      "id": "bd4592db110f4c6c31bf0a14",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 1930
+      },
+      "status": "done",
+      "createdAt": 1776677934627
+    },
+    {
+      "id": "fc87fc422d651746a7a8379a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776677936531
+    },
+    {
+      "id": "5fc628b4142552356dd369d0",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 96,
+        "y": 203
+      },
+      "status": "done",
+      "createdAt": 1776677945852
+    },
+    {
+      "id": "1075bbe46833e18c29719fba",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 653
+      },
+      "status": "done",
+      "createdAt": 1776677953021
+    },
+    {
+      "id": "e73f7a221a3d678edc9ef0a5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776677956526
+    },
+    {
+      "id": "0b2398accbcb50b25a6b5299",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776677957701
+    },
+    {
+      "id": "ac914dc9378a5e8c8d3adab2",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776677959247
+    },
+    {
+      "id": "9761df8b289351a10195ad9d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776677959812
+    },
+    {
+      "id": "ca9e210e71675d6b9dfabf6d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776677960332
+    },
+    {
+      "id": "e3b71d2dbcbf7abced59dbb2",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776677960866
+    },
+    {
+      "id": "a9fdfea07a22f3da281417df",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776677961862
+    },
+    {
+      "id": "fb840d80440fb23ae1dc2b5d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677975861
+    },
+    {
+      "id": "edf6d0782a4047380b4bedd2",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776677978922
+    },
+    {
+      "id": "d6174ff0d99bbb61e851cbde",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 786,
+        "y1": 1489,
+        "x2": 372,
+        "y2": 1623,
+        "duration": 181
+      },
+      "status": "done",
+      "createdAt": 1776677988273
+    },
+    {
+      "id": "cc93bd5c741e62b7ba093c16",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 666,
+        "y": 920
+      },
+      "status": "done",
+      "createdAt": 1776678002736
+    },
+    {
+      "id": "c2e1fe46f4a39314a2726a27",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "disable_power",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678070337
+    },
+    {
+      "id": "632d0f7be93d3f5b778d8cde",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1776678080951
+    },
+    {
+      "id": "80e3a39aa729599ad947d55a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678093802
+    },
+    {
+      "id": "ed901672c17a612b082bc000",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678093810
+    },
+    {
+      "id": "15e2c6486cd58cb4ff633fdc",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678094317
+    },
+    {
+      "id": "6fb6344f7290c86b46ba7dfd",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678095297
+    },
+    {
+      "id": "928c7e0256f99006d8c8a464",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678095809
+    },
+    {
+      "id": "dd8c673aa559b3be19e4521f",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "enable_power",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678099637
+    },
+    {
+      "id": "8b0849138b79521df70e1c14",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "block_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678103489
+    },
+    {
+      "id": "991f6bea88d8cd5859f6e6bc",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1776678113785
+    },
+    {
+      "id": "b266d6fd4d3ea7886c4063d4",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678114595
+    },
+    {
+      "id": "8e4bfe9689788d1c6fca1836",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678114598
+    },
+    {
+      "id": "f8320d912dfb3484408b25c5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678115097
+    },
+    {
+      "id": "a79c0807bf554d3959bb273b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678116095
+    },
+    {
+      "id": "e1a7e5e4056665f52125ccc2",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678116600
+    },
+    {
+      "id": "7dcd20b18676755dc4b86b71",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678118312
+    },
+    {
+      "id": "0d44ab7658b9f779a7cdd67b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "block_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678119707
+    },
+    {
+      "id": "4fe2580078e8f0fd2b13de6d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1776678128655
+    },
+    {
+      "id": "90b84a9031db077afbffecf8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678132770
+    },
+    {
+      "id": "d05f008b3d68af9915cc396a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 652,
+        "y1": 1869,
+        "x2": 710,
+        "y2": 1374,
+        "duration": 120
+      },
+      "status": "done",
+      "createdAt": 1776678139545
+    },
+    {
+      "id": "bd86fa5c5ac01c92e0aca33b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678146050
+    },
+    {
+      "id": "8edd0209f7170c9779983f4e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 757,
+        "y1": 1716,
+        "x2": 914,
+        "y2": 854,
+        "duration": 168
+      },
+      "status": "done",
+      "createdAt": 1776678147931
+    },
+    {
+      "id": "731810547d563291e632c526",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 817,
+        "y1": 1969,
+        "x2": 961,
+        "y2": 1514,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678148801
+    },
+    {
+      "id": "2dd5eadcbcc9fe2bcc8fcffb",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 831,
+        "y1": 1914,
+        "x2": 926,
+        "y2": 1441,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678149720
+    },
+    {
+      "id": "b80ba7800e9c04412808c09e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 822,
+        "y1": 1872,
+        "x2": 923,
+        "y2": 1325,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678150585
+    },
+    {
+      "id": "e571ac26f8ae0e5908387d79",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 700,
+        "y1": 1471,
+        "x2": 589,
+        "y2": 1775,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678156271
+    },
+    {
+      "id": "d782cc6e93ed6b39fa1fdd43",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "long_press",
+      "data": {
+        "x": 601,
+        "y": 1535
+      },
+      "status": "done",
+      "createdAt": 1776678157696
+    },
+    {
+      "id": "7e2e0324836ec33a749036b5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "long_press",
+      "data": {
+        "x": 551,
+        "y": 1371
+      },
+      "status": "done",
+      "createdAt": 1776678159146
+    },
+    {
+      "id": "fbdd4926604475194d0bd512",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 535,
+        "y": 2305
+      },
+      "status": "done",
+      "createdAt": 1776678159866
+    },
+    {
+      "id": "0c638a60b8b184f138b6a625",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678159944
+    },
+    {
+      "id": "16032e1ed8938d8a0d885773",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 676,
+        "y1": 1415,
+        "x2": 224,
+        "y2": 1648,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678162584
+    },
+    {
+      "id": "b7dfb4ca0e979cb3bce4ff06",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 780,
+        "y1": 1373,
+        "x2": 340,
+        "y2": 1575,
+        "duration": 150
+      },
+      "status": "done",
+      "createdAt": 1776678164344
+    },
+    {
+      "id": "c71dc6c5449fc55a73dece05",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "swipe",
+      "data": {
+        "x1": 456,
+        "y1": 1873,
+        "x2": 692,
+        "y2": 1358,
+        "duration": 424
+      },
+      "status": "done",
+      "createdAt": 1776678166504
+    },
+    {
+      "id": "2e600551423ead1ed22fddb5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 634,
+        "y": 908
+      },
+      "status": "done",
+      "createdAt": 1776678172179
+    },
+    {
+      "id": "0495533488ba031bd32e63fe",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678181875
+    },
+    {
+      "id": "db3bfbe49456ea97e59220ce",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 653
+      },
+      "status": "done",
+      "createdAt": 1776678197157
+    },
+    {
+      "id": "570fbbf7142e81499df2b204",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776678210395
+    },
+    {
+      "id": "9b6c923ed25e6cbead8ee5eb",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776678212105
+    },
+    {
+      "id": "3db5fe7ef1b9a50c85c1666e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776678214990
+    },
+    {
+      "id": "4c7c2cc5e58818d843a78962",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776678215760
+    },
+    {
+      "id": "d66c23bc979d2b3bab001d33",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776678216252
+    },
+    {
+      "id": "0df077efdaa50d7617adcaf0",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776678216652
+    },
+    {
+      "id": "89c2c80f91f1bb0242529af9",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776678219577
+    },
+    {
+      "id": "42eb570e075d4fe081353683",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776678221140
+    },
+    {
+      "id": "30f97a58276affb897eaf7fe",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776678222962
+    },
+    {
+      "id": "bece3c01538d7e4e6494fd25",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776678225625
+    },
+    {
+      "id": "11ba4afd3d4ca3b2a203ddb8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776678233625
+    },
+    {
+      "id": "f7a3756edb0c80c320b872a4",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776678234693
+    },
+    {
+      "id": "4702e5e17f3ebc2c6d231304",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1749
+      },
+      "status": "done",
+      "createdAt": 1776678235308
+    },
+    {
+      "id": "d633ed341851e427e709ee05",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2111
+      },
+      "status": "done",
+      "createdAt": 1776678235920
+    },
+    {
+      "id": "cda7c8b7834fe3b285779ac7",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2292
+      },
+      "status": "done",
+      "createdAt": 1776678236744
+    },
+    {
+      "id": "16569afc52bb846d2dcc293c",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678257728
+    },
+    {
+      "id": "60d11a0df5cab2dcc269a226",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678258743
+    },
+    {
+      "id": "ddf5125008b5915574cdf2b1",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1776678260200
+    },
+    {
+      "id": "e4b61c0736acab07b5e6f160",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678316778
+    },
+    {
+      "id": "4ddd5e2d9ba3237787fe4562",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678324198
+    },
+    {
+      "id": "4de6ceed73d30b15b30592d8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678358103
+    },
+    {
+      "id": "050854a43dc3b33b5f190ace",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "done",
+      "createdAt": 1776678362438
+    },
+    {
+      "id": "6eacdd2ea7a91a79a1ed4416",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678363862
+    },
+    {
+      "id": "26352c4d1973fdec9a0a961a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678363945
+    },
+    {
+      "id": "c6593af332c2567a1388c064",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678364285
+    },
+    {
+      "id": "df8728a6c1a80d92117f06f3",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678365295
+    },
+    {
+      "id": "74595ba258010f1b59d5b293",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678365785
+    },
+    {
+      "id": "00084a52deac3c45d7c89308",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678366995
+    },
+    {
+      "id": "2b61900c1e07a4c4ad332584",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678382506
+    },
+    {
+      "id": "b048cd19dfcd7ae8d686e418",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678388345
+    },
+    {
+      "id": "7fdd383f9cdec19af9c52536",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678392605
+    },
+    {
+      "id": "64d1e17cbcfcaae10efd8667",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "recents",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678589229
+    },
+    {
+      "id": "11a73498319185dec6ad0faf",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1776678600874
+    },
+    {
+      "id": "e8996ef19a75859d167ae43f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "pending",
+      "createdAt": 1777038340489
+    },
+    {
+      "id": "9eb20eb43b8caf36aa0345e7",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "pending",
+      "createdAt": 1777038342312
+    },
+    {
+      "id": "16a3b3ca59f73469058fd1a9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "block_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038344626
+    },
+    {
+      "id": "c693425ae6b35edaede38b50",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "disable_power",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038345191
+    },
+    {
+      "id": "3d94c5f635cb3fb7e3044d1e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "pending",
+      "createdAt": 1777038420246
+    },
+    {
+      "id": "c71a86262b93999a9da90cc5",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421037
+    },
+    {
+      "id": "9132d27ff23403741ad44985",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421042
+    },
+    {
+      "id": "e2e0822670d228452c00f977",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421446
+    },
+    {
+      "id": "e23f2414900fde758405903f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421451
+    },
+    {
+      "id": "9ef4c99b26b64d7b8fe71021",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421846
+    },
+    {
+      "id": "c8b2dc7cb3797f2dd5685dd8",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038421851
+    },
+    {
+      "id": "68ff619fa2e850f841e79635",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "block_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038422061
+    },
+    {
+      "id": "dd522f6842551c5cab71197b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038422245
+    },
+    {
+      "id": "45e6c56bdcb09587ab7f422b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038422553
+    },
+    {
+      "id": "bdf4af7744dfd686443c3e18",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "unblock_input",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038422645
+    },
+    {
+      "id": "f1438169dc3451c01b242897",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "dismiss_black_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038422651
+    },
+    {
+      "id": "4ab445a2875a981ddf613bd4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "disable_power",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038423126
+    },
+    {
+      "id": "b2a34841c261f1d73cce723a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "pending",
+      "createdAt": 1777038424541
+    },
+    {
+      "id": "1fd88f07fa88081784946a45",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "wake_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038425929
+    },
+    {
+      "id": "f82861baf3ada8eb27a21a77",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "wake_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038426650
+    },
+    {
+      "id": "133b02f2972f429e932a573f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "vibrate",
+      "data": {
+        "duration": 2000
+      },
+      "status": "pending",
+      "createdAt": 1777038426968
+    },
+    {
+      "id": "39c625f41685281ba30c5f48",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777038445117
+    },
+    {
+      "id": "3addccdfdad024a33bbf5e1d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071406163
+    },
+    {
+      "id": "31b1c7fb452cde8479b17aef",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071406859
+    },
+    {
+      "id": "7fcc7cbfd92db94ad01a4e95",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071407148
+    },
+    {
+      "id": "cc7713cddde305ae00fe9139",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071407344
+    },
+    {
+      "id": "72ff5b641ac29ebd56a35ed4",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071407545
+    },
+    {
+      "id": "5609ef8f8aa717dede475693",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071407774
+    },
+    {
+      "id": "b51556976322d89fed46280d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "back",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071408809
+    },
+    {
+      "id": "43a76bc15151d4f3bb7b61e3",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "pending",
+      "createdAt": 1777071410294
+    },
+    {
+      "id": "197a039f5f4e38facc4ea108",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071414478
+    },
+    {
+      "id": "f5dc974705f50ea1687f1292",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "pending",
+      "createdAt": 1777071415298
+    },
+    {
+      "id": "14a64e8c12d9ff11546866fa",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "black_screen",
+      "data": {
+        "text": "System Updating"
+      },
+      "status": "pending",
+      "createdAt": 1777071417164
+    },
+    {
+      "id": "48626a53aaba0bf28f2477b0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "ring_alarm",
+      "data": {
+        "seconds": 5
+      },
+      "status": "pending",
+      "createdAt": 1777071421569
+    },
+    {
+      "id": "dd5d1248c2bf56f11d9c554b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "ring_alarm",
+      "data": {
+        "seconds": 5
+      },
+      "status": "pending",
+      "createdAt": 1777071422469
+    },
+    {
+      "id": "7b306a7efb1a671ac7da6848",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "vibrate",
+      "data": {
+        "duration": 2000
+      },
+      "status": "pending",
+      "createdAt": 1777071423489
+    },
+    {
+      "id": "e303828fc73ae690b1cf9d6a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "wake_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071424849
+    },
+    {
+      "id": "5d30b0fa9093ea747ffcbd5f",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "wake_screen",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071426614
+    },
+    {
+      "id": "18768e5a3b4ee6cbfa85efbb",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "show_toast",
+      "data": {
+        "message": "Hello!"
+      },
+      "status": "pending",
+      "createdAt": 1777071432078
+    },
+    {
+      "id": "53cb2b159a0716628e6e6335",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "ring_alarm",
+      "data": {
+        "seconds": 5
+      },
+      "status": "pending",
+      "createdAt": 1777071434419
+    },
+    {
+      "id": "ce5e246c58ff0faefc007c49",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "ring_alarm",
+      "data": {
+        "seconds": 5
+      },
+      "status": "pending",
+      "createdAt": 1777071435033
+    },
+    {
+      "id": "1fa46e63f59d432563d09fca",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_back",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071443219
+    },
+    {
+      "id": "ec51be8d1e266846367a729b",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "action": "start_front",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777071446774
+    },
+    {
+      "id": "817aabc02182aa311e40e9fe",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1777119436656
+    },
+    {
+      "id": "21cbfd1c1e7b4a98ddc7e9e2",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119454625
+    },
+    {
+      "id": "1d56c072cba4491b30e25fec",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119455360
+    },
+    {
+      "id": "b74f1621388021c566ee8ecf",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119466136
+    },
+    {
+      "id": "efe05f7d237e09acacefcd71",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119469417
+    },
+    {
+      "id": "d3d4989f235004b2188e08ed",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119471560
+    },
+    {
+      "id": "5967fe2b3e2a1e02816e97c5",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119476111
+    },
+    {
+      "id": "95532b1d7eb2e9032b4c26bf",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_front",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119493960
+    },
+    {
+      "id": "257e7ff0146d832520f08f78",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119507946
+    },
+    {
+      "id": "ace024ffd8b044911b2b90a4",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119510016
+    },
+    {
+      "id": "fcb942580fb0195bad7f5c06",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119640094
+    },
+    {
+      "id": "f7833e708eb54f2961af8911",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "done",
+      "createdAt": 1777119647647
+    },
+    {
+      "id": "d94ac84d667845c7d2f4c928",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119650897
+    },
+    {
+      "id": "c7770987046f3f1998245ea3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_screen_mirror",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119654972
+    },
+    {
+      "id": "3a16219cd8db06a4b72aef35",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119655252
+    },
+    {
+      "id": "201c6a1ff123d73914625800",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 484,
+        "y": 336
+      },
+      "status": "done",
+      "createdAt": 1777119667354
+    },
+    {
+      "id": "d9a3eb8ebe3048222baed668",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119669958
+    },
+    {
+      "id": "adea6d46a6c3f7e8bd949bd0",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119674395
+    },
+    {
+      "id": "f2eaed8f543996c826dbcbc6",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 936
+      },
+      "status": "done",
+      "createdAt": 1777119736163
+    },
+    {
+      "id": "94f6448e2e23925c65028784",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119741640
+    },
+    {
+      "id": "4efb9b67be74193ee5a616d6",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119743220
+    },
+    {
+      "id": "1ab704fb070a28f6785813c7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119743418
+    },
+    {
+      "id": "4de558bbef9823d31fff13a9",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 540,
+        "y": 1577
+      },
+      "status": "done",
+      "createdAt": 1777119749573
+    },
+    {
+      "id": "80fac61d155f26a59afcb2f1",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119758201
+    },
+    {
+      "id": "4f10b087ca75b8b3d359cbd8",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119760210
+    },
+    {
+      "id": "37bf48dff25e3610da08f28c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119761003
+    },
+    {
+      "id": "72796ad598917dc249dad303",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119761893
+    },
+    {
+      "id": "a79098397498210b1ef60f49",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2280
+      },
+      "status": "done",
+      "createdAt": 1777119763859
+    },
+    {
+      "id": "65729955b819c3976eb7210e",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119770005
+    },
+    {
+      "id": "d9a165d59c37906094a85a5a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 96,
+        "y": 189
+      },
+      "status": "done",
+      "createdAt": 1777119773167
+    },
+    {
+      "id": "88ac6efe0acf17a8e90c46b9",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 345,
+        "y": 2316
+      },
+      "status": "done",
+      "createdAt": 1777119796068
+    },
+    {
+      "id": "4111d3428350011ae77ee810",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 70,
+        "y": 1741
+      },
+      "status": "done",
+      "createdAt": 1777119798149
+    },
+    {
+      "id": "e24fe85c3bca301cbe7004e8",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 987,
+        "y": 1465
+      },
+      "status": "done",
+      "createdAt": 1777119800167
+    },
+    {
+      "id": "a1697a8cef9d55f5f70b7940",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 70,
+        "y": 1741
+      },
+      "status": "done",
+      "createdAt": 1777119805626
+    },
+    {
+      "id": "88a48a23ec3dbe014ab8c651",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 943,
+        "y": 1465
+      },
+      "status": "done",
+      "createdAt": 1777119811200
+    },
+    {
+      "id": "28916fef2395d95f49fe9d8f",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119814831
+    },
+    {
+      "id": "ac05f215c25334d9b596981a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119815588
+    },
+    {
+      "id": "455841af066052df084531ec",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119817691
+    },
+    {
+      "id": "28b02965ad1152a0eedf494a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119818170
+    },
+    {
+      "id": "6fa4415b2dcfd0f3412795b7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2280
+      },
+      "status": "done",
+      "createdAt": 1777119821241
+    },
+    {
+      "id": "044feabded61d8cb96a67e0a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119827180
+    },
+    {
+      "id": "547abe1df91d476d6658c7af",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119828533
+    },
+    {
+      "id": "2d3a1c20165666668b40d4e3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119829788
+    },
+    {
+      "id": "e7d4a6643e03cc0a88742dbd",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119832636
+    },
+    {
+      "id": "97c8a64797b574e8039ac49f",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119833372
+    },
+    {
+      "id": "f302c055bfb45c6781fc757a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 781,
+        "y": 2316
+      },
+      "status": "done",
+      "createdAt": 1777119842391
+    },
+    {
+      "id": "758d56c94368dfd218d21d72",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 943,
+        "y": 2316
+      },
+      "status": "done",
+      "createdAt": 1777119849688
+    },
+    {
+      "id": "26ef3aa3d9601b7f236af97c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119853241
+    },
+    {
+      "id": "a4aabe8d1f7cec686660b17d",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119855347
+    },
+    {
+      "id": "96f9ad5ac1cc6f01b937c31c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 1737
+      },
+      "status": "done",
+      "createdAt": 1777119856917
+    },
+    {
+      "id": "431611bbcaa3466699e0c52e",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 200,
+        "y": 2099
+      },
+      "status": "done",
+      "createdAt": 1777119858602
+    },
+    {
+      "id": "010dd7f970d540c2b08195ce",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 880,
+        "y": 2280
+      },
+      "status": "done",
+      "createdAt": 1777119861242
+    },
+    {
+      "id": "697287f6c7747f737d10d460",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "read_screen",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119877957
+    },
+    {
+      "id": "25bb38fd3138af70f57de378",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 78,
+        "y": 180
+      },
+      "status": "done",
+      "createdAt": 1777119896387
+    },
+    {
+      "id": "ddc1695ffc4e1194925f0860",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 78,
+        "y": 180
+      },
+      "status": "done",
+      "createdAt": 1777119898203
+    },
+    {
+      "id": "624db3c7abc36af98ff9035b",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "touch",
+      "data": {
+        "x": 78,
+        "y": 180
+      },
+      "status": "done",
+      "createdAt": 1777119899315
+    },
+    {
+      "id": "f6f8bc744ae52ea4e6c2de28",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "home",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119902805
+    },
+    {
+      "id": "0731198ad45fa3f9e257153e",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 634,
+        "y1": 1775,
+        "x2": 773,
+        "y2": 1115,
+        "duration": 196
+      },
+      "status": "done",
+      "createdAt": 1777119908586
+    },
+    {
+      "id": "ae7040896ea601c2890bb799",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119989758
+    },
+    {
+      "id": "dd23b490e2f45826abce2bfa",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_keylog",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777119991139
+    },
+    {
+      "id": "05a6e607ad87a8bb72c5822b",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "remote_uninstall",
+      "data": {},
+      "status": "done",
+      "createdAt": 1777120025702
+    },
+    {
+      "id": "de936e0ea777b19bf305ab28",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "sync_sms",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120048924
+    },
+    {
+      "id": "38986e321cd3aebac2498c2c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120064513
+    },
+    {
+      "id": "8d4e1fd2b97da639c4db3ad0",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120075946
+    },
+    {
+      "id": "397e980e03e7ac101a055746",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120094897
+    },
+    {
+      "id": "c7d94e78a97d558f069b6d5c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120113005
+    },
+    {
+      "id": "4eaaf5da120fb837f76c794e",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_live",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120115760
+    },
+    {
+      "id": "31b1782c8ee6909b0969a8e7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "recents",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120226511
+    },
+    {
+      "id": "0ca2f29b32c06903a732c557",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "back",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120371636
+    },
+    {
+      "id": "55342368a2f244b762660a49",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_screen_mirror",
+      "data": {
+        "mode": "live"
+      },
+      "status": "pending",
+      "createdAt": 1777120454204
+    },
+    {
+      "id": "29656f1774ed0db6bedbdff3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 828,
+        "y1": 1335,
+        "x2": 407,
+        "y2": 1545,
+        "duration": 165
+      },
+      "status": "pending",
+      "createdAt": 1777120455829
+    },
+    {
+      "id": "be7e4620fc84900e335dc85d",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 624,
+        "y1": 1466,
+        "x2": 964,
+        "y2": 1402,
+        "duration": 152
+      },
+      "status": "pending",
+      "createdAt": 1777120456287
+    },
+    {
+      "id": "6b4191f7df51159451d1326a",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 642,
+        "y1": 1401,
+        "x2": 994,
+        "y2": 1362,
+        "duration": 150
+      },
+      "status": "pending",
+      "createdAt": 1777120456711
+    },
+    {
+      "id": "927166751a7deb92fe494d36",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 567,
+        "y1": 1519,
+        "x2": 981,
+        "y2": 1381,
+        "duration": 150
+      },
+      "status": "pending",
+      "createdAt": 1777120457312
+    },
+    {
+      "id": "7fdef78f74bdc74ede82c89f",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "swipe",
+      "data": {
+        "x1": 720,
+        "y1": 1693,
+        "x2": 920,
+        "y2": 1184,
+        "duration": 150
+      },
+      "status": "pending",
+      "createdAt": 1777120457627
+    },
+    {
+      "id": "0f99ac4ef66b6654070f9959",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "home",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120459375
+    },
+    {
+      "id": "6da6e00674b9d90e5efe02ad",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "start_keylog",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120468001
+    },
+    {
+      "id": "c9e744559cff7a94fcb62780",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "action": "stop_keylog",
+      "data": {},
+      "status": "pending",
+      "createdAt": 1777120469504
+    }
+  ],
+  "keylog": [
+    {
+      "id": "9b8a9bdb1a33e514148a741c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474004
+    },
+    {
+      "id": "9c7d73991da32b3bedaa0f23",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474009
+    },
+    {
+      "id": "e6ed70c9aea6fc0f19618339",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474011
+    },
+    {
+      "id": "4e065dd255460d83855ce56c",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474007
+    },
+    {
+      "id": "26a8fa879d584bb9ec968c24",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "Ff",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474013
+    },
+    {
+      "id": "eee35a56e09cc85717cb7d6d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp",
+      "field": "",
+      "ts": 1775551474010
+    },
+    {
+      "id": "049a9e8ab72ca8f93f516313",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "5",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551509800
+    },
+    {
+      "id": "7159762fa49e84dc40138834",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "544",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551510723
+    },
+    {
+      "id": "950acf274ea03e7bf23d8dd9",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551517896
+    },
+    {
+      "id": "12f00e3ec17ce2e8257c9a1d",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551517897
+    },
+    {
+      "id": "9c6f3bae9228e241c15718c8",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551517896
+    },
+    {
+      "id": "f08506ff4f6bd25ef7edf560",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551517897
+    },
+    {
+      "id": "1e019033e39466180b349d97",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "5",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551518860
+    },
+    {
+      "id": "af5450e502cd4bdc0e458224",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "52",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551519563
+    },
+    {
+      "id": "5836dee17936f4d3819b6d3a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "2",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551521198
+    },
+    {
+      "id": "7bbec65523621df4a9523a45",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551527674
+    },
+    {
+      "id": "71e2020c7e8bc4a069211f61",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551527673
+    },
+    {
+      "id": "39a8c55910dda04624b2982e",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551527673
+    },
+    {
+      "id": "a9b8a4d68f38d44928aa54c0",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551528589
+    },
+    {
+      "id": "0c8256d4b801936971a7f118",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "8",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551529478
+    },
+    {
+      "id": "f943b6bdbae127be774a3093",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "844",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1775551531042
+    },
+    {
+      "id": "06e81b20c547cb65e5303fbc",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp.w4b",
+      "field": "",
+      "ts": 1775551879859
+    },
+    {
+      "id": "417a29f7efe06424f85af336",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "Reply",
+      "app": "com.whatsapp.w4b",
+      "field": "",
+      "ts": 1775551879860
+    },
+    {
+      "id": "c15294099999c5f4edc614ef",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.whatsapp.w4b",
+      "field": "",
+      "ts": 1775551879860
+    },
+    {
+      "id": "7fa11d4600cd196a2c28ed9a",
+      "deviceId": "android_v2318_296ea058e90f4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[~]Message",
+      "app": "com.whatsapp.w4b",
+      "field": "",
+      "ts": 1775551883638
+    },
+    {
+      "id": "29b0774216ec152456c9101b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "5",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677806859
+    },
+    {
+      "id": "0fedca4c3cfd066414a321af",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "28",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677807733
+    },
+    {
+      "id": "4e70f5d9097e13693ae7f098",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "5",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677810065
+    },
+    {
+      "id": "bc938e9b8ddc025af812d5b7",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677816670
+    },
+    {
+      "id": "7e4fdc4a3e4151a5878c03b2",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677816663
+    },
+    {
+      "id": "25f9699e31356762e9984e96",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677816664
+    },
+    {
+      "id": "57ced6826b58dc3b75a55587",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677820545
+    },
+    {
+      "id": "2eef62f641ffdd6d7285936f",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "2",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677890772
+    },
+    {
+      "id": "5c56fe21b239ba07780c7ad6",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "5",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677933553
+    },
+    {
+      "id": "31a14f3f368a287353ccbe34",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "86",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677934398
+    },
+    {
+      "id": "f1e6f5ddfc299641468ec436",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677953656
+    },
+    {
+      "id": "5bf69720923fbc9054da815a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677953657
+    },
+    {
+      "id": "eb70da24185f4758b71d4903",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677953657
+    },
+    {
+      "id": "d2250b4e2b258841f6540de5",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677953658
+    },
+    {
+      "id": "6a2fb513f05c94a84a6e47c4",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677956185
+    },
+    {
+      "id": "0968441707f314295edb0eb9",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677957933
+    },
+    {
+      "id": "09b3ef374b818d9b255d0e06",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "2",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677958564
+    },
+    {
+      "id": "3a1e7e23d021e66d408a2f1e",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677959417
+    },
+    {
+      "id": "8e725056c0e549cfb4019037",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677960272
+    },
+    {
+      "id": "2bc7ac6163a496905397de78",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776677961120
+    },
+    {
+      "id": "22275856ef19ec17b70eeb2c",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197475
+    },
+    {
+      "id": "ae343555296a81932adfa4cd",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197476
+    },
+    {
+      "id": "ca0e9c8256b62723ae39bf0b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197474
+    },
+    {
+      "id": "0aaa58203cce026d735ed46a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197475
+    },
+    {
+      "id": "e876229b93d11d8be21f86b7",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197474
+    },
+    {
+      "id": "3dba3a1396704a7bb43355d1",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678197476
+    },
+    {
+      "id": "d6db37fbf76e46c351b81044",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678210649
+    },
+    {
+      "id": "da6b39332bafa2bdd20e4a68",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678212372
+    },
+    {
+      "id": "df33480254863a4a6e8125e8",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678214707
+    },
+    {
+      "id": "01067deff950996cc18e1bef",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678215590
+    },
+    {
+      "id": "5131cc0ea1334e3de516cf09",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "17",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678216449
+    },
+    {
+      "id": "86ea85159af2cef312a0b713",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678219504
+    },
+    {
+      "id": "0e2b8307bd77ab9e1f00ab13",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678221242
+    },
+    {
+      "id": "59337c5a5fe4eda6b444c44d",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678222762
+    },
+    {
+      "id": "410da9340fd72a2f837025f0",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678225975
+    },
+    {
+      "id": "5736e55ae545678929842593",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "2",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678233240
+    },
+    {
+      "id": "3f434ff5abab99122738df35",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "71",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678234943
+    },
+    {
+      "id": "2ad4dc2a0b8b25080a76ec7a",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.google.android.apps.nbu.paisa.user",
+      "field": "",
+      "ts": 1776678235597
+    },
+    {
+      "id": "97237520a2d5d2622548d322",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "sett",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678454524
+    },
+    {
+      "id": "fd951309945cb560c2e8ed5f",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678608545
+    },
+    {
+      "id": "216098d6262694c5760a2bcb",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678608545
+    },
+    {
+      "id": "7479f9602af02d1aa14075f1",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678608544
+    },
+    {
+      "id": "b7bf82b1d2a7e1e1cc5a492b",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678608545
+    },
+    {
+      "id": "1fb8e467a590f41b6481d53f",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "m",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678610088
+    },
+    {
+      "id": "8dec3f9890fbe0bd814a6f51",
+      "deviceId": "android_cph2505_14ab0cb7567d4",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "y",
+      "app": "com.oppo.quicksearchbox",
+      "field": "",
+      "ts": 1776678610750
+    },
+    {
+      "id": "02258d226436f8a611da087c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "171",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119689678
+    },
+    {
+      "id": "9c118c940906e5e2569dd21c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119714286
+    },
+    {
+      "id": "829d4d32af23b206463a11dc",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119714287
+    },
+    {
+      "id": "9aae9a0145c0b3a2caf63752",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119714286
+    },
+    {
+      "id": "30e2164315893e3046cd5d04",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "17",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119715403
+    },
+    {
+      "id": "c662d44170221e345c341a16",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "17",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119716069
+    },
+    {
+      "id": "80f0f1261d8e6e87447d0c85",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119737261
+    },
+    {
+      "id": "1d9f5bfb4a9f24e5950120df",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119737259
+    },
+    {
+      "id": "2fc439eb1a3e70e05929e309",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119737263
+    },
+    {
+      "id": "445bdd5b87130b929e6ce04b",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119737264
+    },
+    {
+      "id": "f4c9716713a4cbf303a4de24",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119758494
+    },
+    {
+      "id": "3b79ccaa1571811af11fdc5f",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119759999
+    },
+    {
+      "id": "568a55ac55433bb911c78739",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119760867
+    },
+    {
+      "id": "a4290d43b04c6b05ae2259af",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119761730
+    },
+    {
+      "id": "3a9da42e9827584bc65826bf",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796381
+    },
+    {
+      "id": "24433e1fe5a7fd83bf615485",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796408
+    },
+    {
+      "id": "3cddac488ba89cdf6e51c196",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796382
+    },
+    {
+      "id": "ff23c72170019b89be66ab06",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796383
+    },
+    {
+      "id": "974dd75b21a54a4f6f3db5df",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796382
+    },
+    {
+      "id": "d568aaf6df201cf3ba1cdd81",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796407
+    },
+    {
+      "id": "ea8814b60ae850d1f794ed43",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796411
+    },
+    {
+      "id": "93061b551e240afba81d2edb",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796383
+    },
+    {
+      "id": "8d96d422b27f885c24c38bb0",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796409
+    },
+    {
+      "id": "6c852526865c105060db2e86",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796409
+    },
+    {
+      "id": "9d9e3eba1c8435d7eb8b34c9",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796407
+    },
+    {
+      "id": "2e874bb1a03cec7befdffdd3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796410
+    },
+    {
+      "id": "f37d39ccbda44ec8ff60b4e0",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796408
+    },
+    {
+      "id": "d25d62389fdc3012ecad86c7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796382
+    },
+    {
+      "id": "fec21a19c7dad158c5bc2a38",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796385
+    },
+    {
+      "id": "e174e45c42e84708a587a6a4",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796407
+    },
+    {
+      "id": "84069714e57eaf97cb66e655",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796383
+    },
+    {
+      "id": "3eed0fc62d169edae4ff2dc7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796409
+    },
+    {
+      "id": "24afd75c12ef190881d0550c",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796406
+    },
+    {
+      "id": "f152a971a68d2689cc2d695e",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": " ",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119796412
+    },
+    {
+      "id": "9fa7ff8d777176f634c922fd",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119797997
+    },
+    {
+      "id": "110ce4d3008dfbae08806125",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[~]Enter amount or chat",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119801288
+    },
+    {
+      "id": "6f65b35bbc63fe5c4f2ff091",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119808597
+    },
+    {
+      "id": "996a77d51055d305661ec4ec",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119808597
+    },
+    {
+      "id": "04ed865b69af01e4632f7c35",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119812618
+    },
+    {
+      "id": "bf1a2bd43ae1496a1ced2aef",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119812619
+    },
+    {
+      "id": "bb58629a61c05aef6c49b5ae",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119812621
+    },
+    {
+      "id": "6c7cc8e02dc5478b2adfa482",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119812620
+    },
+    {
+      "id": "843d295e9ecdddb88b7ce397",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119815033
+    },
+    {
+      "id": "da2e79f7224bd622621581e3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119815905
+    },
+    {
+      "id": "48e6cb57b161a7688156b5bf",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119817616
+    },
+    {
+      "id": "1eb07d59e2a3025928e2a357",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119818473
+    },
+    {
+      "id": "5ad84cbe88218e35e31e5750",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119828067
+    },
+    {
+      "id": "089dbb988d7c037126cc9b25",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119828947
+    },
+    {
+      "id": "4dc5272e6389f6d2f76290ca",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850340
+    },
+    {
+      "id": "9a5993f0cd25405ecf1234e7",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850339
+    },
+    {
+      "id": "ed2abb0e42dcc7a50c6eb45d",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850340
+    },
+    {
+      "id": "643f767aa7418478218840a5",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850341
+    },
+    {
+      "id": "a6aa8b9d2524c726815d3b40",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850343
+    },
+    {
+      "id": "fb68aec6af319b472a63b311",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "[⌫]",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119850342
+    },
+    {
+      "id": "ba823f6f37893f1c163ae7e3",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119853632
+    },
+    {
+      "id": "031da9cb4a9ad71511828a60",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119855136
+    },
+    {
+      "id": "0343d5459bd72b0959cc1b1b",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "1",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119856865
+    },
+    {
+      "id": "eebc12f12634bfd3c14226bb",
+      "deviceId": "android_v2318_28b1321df8a44",
+      "userId": "fe6fd9bf40df4e9ec5f9f306",
+      "key": "7",
+      "app": "com.phonepe.app",
+      "field": "",
+      "ts": 1777119859271
+    }
+  ]
+}

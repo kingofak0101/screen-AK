@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+  <!-- Phone body -->
+  <path
+      android:fillColor="#FFFFFF"
+      android:pathData="M41,22 L67,22 Q72,22 72,27 L72,81 Q72,86 67,86 L41,86 Q36,86 36,81 L36,27 Q36,22 41,22 Z"/>
+
+  <!-- Screen area -->
+  <path
+      android:fillColor="#64B5F6"
+      android:pathData="M40,31 L68,31 L68,70 L40,70 Z"/>
+
+  <!-- Home button circle -->
+  <path
+      android:fillColor="#64B5F6"
+      android:pathData="M54,76 m-4,0 a4,4 0 1 0 8,0 a4,4 0 1 0 -8,0"/>
+
+  <!-- Speaker grille line -->
+  <path
+      android:fillColor="#BBDEFB"
+      android:pathData="M48,25 L60,25 Q61,25 61,26.5 Q61,28 60,28 L48,28 Q47,28 47,26.5 Q47,25 48,25 Z"/>
+
+</vector>
