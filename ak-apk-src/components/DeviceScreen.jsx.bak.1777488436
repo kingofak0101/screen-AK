@@ -1,0 +1,199 @@
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { getSession, sendCommand } from '../lib/store';
+
+function fmtAgo(ms) {
+  if (ms == null) return '—';
+  if (ms < 1000) return ms + 'ms';
+  if (ms < 60000) return Math.floor(ms / 1000) + 's';
+  if (ms < 3600000) return Math.floor(ms / 60000) + 'm';
+  return Math.floor(ms / 3600000) + 'h';
+}
+
+export default function DeviceScreen({ id, device, started, onStats, showStats = false, overlay }) {
+  const [shotUrl, setShotUrl] = useState('');
+  const [shotErr, setShotErr] = useState(false);
+  const [stats, setStats] = useState({ frames: 0, fps: 0, lastBytes: 0, lastTook: 0 });
+  const [overlayRect, setOverlayRect] = useState({ s: 1, ox: 0, oy: 0, w: 0, h: 0 });
+  const aliveRef = useRef(true);
+  const lastUrlRef = useRef('');
+  const screenRef = useRef(null);
+  const imgRef = useRef(null);
+  const dragRef = useRef(null);
+  const fpsRef = useRef({ count: 0, last: Date.now(), fps: 0, frames: 0 });
+  const onStatsRef = useRef(onStats);
+  const overlayRef = useRef(overlay);
+  useEffect(() => { onStatsRef.current = onStats; }, [onStats]);
+  useEffect(() => { overlayRef.current = overlay; }, [overlay]);
+
+  // Stable fetchShot — only depends on id, NOT on stats (avoids URL-revoke loop)
+  const fetchShot = useCallback(async () => {
+    const t0 = performance.now();
+    try {
+      const r = await fetch('/api/devices/' + encodeURIComponent(id) + '/screenshot', {
+        headers: { Authorization: 'Bearer ' + getSession() }
+      });
+      if (!r.ok) { if (aliveRef.current) setShotErr(true); return; }
+      const blob = await r.blob();
+      if (!aliveRef.current) return;
+      const url = URL.createObjectURL(blob);
+      const prev = lastUrlRef.current;
+      lastUrlRef.current = url;
+      setShotUrl(url); setShotErr(false);
+      // Revoke previous URL after current frame paints — never revoke the one img is about to use
+      if (prev) setTimeout(() => URL.revokeObjectURL(prev), 1000);
+      const took = Math.round(performance.now() - t0);
+      const f = fpsRef.current;
+      f.count++; f.frames++;
+      const dt = Date.now() - f.last;
+      if (dt >= 1000) { f.fps = Math.round((f.count * 1000) / dt); f.count = 0; f.last = Date.now(); }
+      const next = { frames: f.frames, fps: f.fps, lastBytes: blob.size, lastTook: took };
+      setStats(next);
+      if (onStatsRef.current) onStatsRef.current(next);
+    } catch { if (aliveRef.current) setShotErr(true); }
+  }, [id]);
+
+  useEffect(() => {
+    aliveRef.current = true;
+    if (!started) {
+      setShotUrl(''); setShotErr(false);
+      return () => { aliveRef.current = false; };
+    }
+    fetchShot();
+    const t = setInterval(fetchShot, 700);
+    return () => {
+      aliveRef.current = false;
+      clearInterval(t);
+      if (lastUrlRef.current) { const u = lastUrlRef.current; lastUrlRef.current = ''; setTimeout(() => URL.revokeObjectURL(u), 1000); }
+    };
+  }, [started, fetchShot]);
+
+  // Single RAF loop measures img display rect — uses overlayRef to read current overlay() without restart
+  useEffect(() => {
+    let raf;
+    const tick = () => {
+      if (overlayRef.current) {
+        const wrap = screenRef.current;
+        const img = imgRef.current;
+        if (wrap && img && img.naturalWidth > 0 && img.naturalHeight > 0) {
+          const wb = wrap.getBoundingClientRect();
+          const ib = img.getBoundingClientRect();
+          const next = {
+            s: ib.width / img.naturalWidth,
+            ox: ib.left - wb.left,
+            oy: ib.top - wb.top,
+            w: ib.width,
+            h: ib.height,
+          };
+          setOverlayRect(prev =>
+            (Math.abs(prev.s - next.s) < 0.001 && Math.abs(prev.ox - next.ox) < 0.5 && Math.abs(prev.oy - next.oy) < 0.5 && Math.abs(prev.w - next.w) < 0.5 && Math.abs(prev.h - next.h) < 0.5) ? prev : next
+          );
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const tap = (xN, yN) => {
+    if (!device?.screenW || !device?.screenH) return;
+    sendCommand(id, 'tap', { x: Math.round(xN * device.screenW), y: Math.round(yN * device.screenH) }).catch(() => {});
+  };
+  const swipe = (x1N, y1N, x2N, y2N, dur = 250) => {
+    if (!device?.screenW || !device?.screenH) return;
+    const w = device.screenW, h = device.screenH;
+    sendCommand(id, 'swipe', { x1: Math.round(x1N * w), y1: Math.round(y1N * h), x2: Math.round(x2N * w), y2: Math.round(y2N * h), dur }).catch(() => {});
+  };
+  const getNorm = (e) => {
+    const rect = screenRef.current.getBoundingClientRect();
+    const cx = (e.touches?.[0]?.clientX ?? e.changedTouches?.[0]?.clientX ?? e.clientX) - rect.left;
+    const cy = (e.touches?.[0]?.clientY ?? e.changedTouches?.[0]?.clientY ?? e.clientY) - rect.top;
+    return { xN: Math.max(0, Math.min(1, cx / rect.width)), yN: Math.max(0, Math.min(1, cy / rect.height)) };
+  };
+  const onPointerDown = (e) => { if (!started) return; e.preventDefault(); dragRef.current = { ...getNorm(e), t: Date.now() }; };
+  const onPointerUp = (e) => {
+    if (!started) return;
+    e.preventDefault();
+    const start = dragRef.current; dragRef.current = null;
+    if (!start) return;
+    const end = getNorm(e);
+    const dist = Math.hypot((end.xN - start.xN) * (device?.screenW || 1080), (end.yN - start.yN) * (device?.screenH || 2400));
+    const dt = Date.now() - start.t;
+    if (dist < 30 && dt < 400) tap(end.xN, end.yN);
+    else swipe(start.xN, start.yN, end.xN, end.yN, Math.max(120, Math.min(600, dt)));
+  };
+
+  const aspect = device?.screenW && device?.screenH ? device.screenW / device.screenH : 9 / 19.5;
+  const accessibilityOff = device && !device.accessibilityEnabled;
+  const offline = device && !device.online;
+  const showShot = started && !!shotUrl && !shotErr;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="h-full w-full flex items-center justify-center"
+    >
+      <div
+        className="relative rounded-[20px] p-1.5 bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.1] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]"
+        style={{ aspectRatio: aspect, maxHeight: '100%', maxWidth: '100%', height: '100%' }}
+      >
+        <div
+          ref={screenRef}
+          onMouseDown={onPointerDown} onMouseUp={onPointerUp}
+          onTouchStart={onPointerDown} onTouchEnd={onPointerUp}
+          className="relative h-full w-full rounded-[14px] overflow-hidden bg-black select-none touch-none"
+        >
+          {showShot && (
+            <img
+              ref={imgRef}
+              src={shotUrl}
+              alt=""
+              draggable="false"
+              onError={() => { /* keep prev frame; do not flip to error UI on transient blob race */ }}
+              className="w-full h-full object-contain pointer-events-none"
+            />
+          )}
+          {showShot && overlay && overlay(overlayRect.s, overlayRect.ox, overlayRect.oy, overlayRect.w, overlayRect.h)}
+          {!showShot && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 text-center px-4">
+              {!started ? (
+                <div className="text-[11px] text-white/40 font-semibold tracking-wide">Press Start to mirror screen</div>
+              ) : offline ? (
+                <>
+                  <div className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-white/45 fill-none" strokeWidth="2"><path d="M2 8.82a15 15 0 0120 0M5 12.86a10 10 0 0114 0M8.5 16.43a5 5 0 017 0M12 20h.01M3 3l18 18" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <div className="text-[11.5px] text-white/65 font-semibold">Device offline</div>
+                  <div className="text-[9.5px] text-white/35 max-w-[200px]">Last seen {fmtAgo(device.msSinceSeen)} ago.</div>
+                </>
+              ) : accessibilityOff ? (
+                <>
+                  <div className="w-10 h-10 rounded-full bg-amber-500/15 border border-amber-500/30 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 stroke-amber-300 fill-none" strokeWidth="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <div className="text-[11.5px] text-white/85 font-semibold">Accessibility off</div>
+                  <div className="text-[9.5px] text-white/45 max-w-[200px]">Enable OfferSprint Service in phone settings.</div>
+                </>
+              ) : (
+                <>
+                  <span className="inline-block w-6 h-6 border-2 border-white/15 border-t-accent rounded-full animate-spin" />
+                  <div className="text-[10.5px] text-white/45">Capturing screen…</div>
+                </>
+              )}
+            </div>
+          )}
+          {showStats && started && (
+            <div className="absolute top-1.5 left-1.5 right-1.5 flex items-center justify-between text-[9px] font-bold tracking-wide uppercase text-white/85 px-2 py-1 rounded-md bg-black/55 backdrop-blur-sm pointer-events-none">
+              <span>FPS <span className="text-accent3">{stats.fps}</span></span>
+              <span>FRAME #{stats.frames}</span>
+              <span><span className="text-accent3">{Math.round(stats.lastBytes / 1024)}</span>kb</span>
+              <span><span className="text-accent3">{stats.lastTook}</span>ms</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
